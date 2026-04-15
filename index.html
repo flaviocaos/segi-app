@@ -8,7 +8,7 @@
 :root{
   --bg:#0a0f1a;--bg2:#111827;--bg3:#1a2235;--bg4:#1e2a40;
   --green:#22c55e;--yellow:#eab308;--orange:#f97316;--red:#ef4444;
-  --blue:#3b82f6;--blue2:#1d4ed8;--cyan:#06b6d4;
+  --blue:#3b82f6;--cyan:#06b6d4;--purple:#a855f7;
   --text:#f1f5f9;--text2:#94a3b8;--text3:#64748b;
   --border:#1e3a5f;--border2:#2d4a70;
   --card:#131f35;--card2:#172238;
@@ -17,21 +17,29 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
 
 /* NAV */
-nav{position:sticky;top:0;z-index:100;background:rgba(10,15,26,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 1rem}
-.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px}
-.nav-logo{display:flex;align-items:center;gap:10px}
-.nav-logo-icon{width:32px;height:32px;background:linear-gradient(135deg,var(--orange),var(--red));border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff;letter-spacing:1px}
-.nav-logo-text{font-size:16px;font-weight:700;letter-spacing:.5px}
-.nav-logo-sub{font-size:10px;color:var(--text2);letter-spacing:.5px;text-transform:uppercase}
-.nav-tabs{display:flex;gap:2px}
-.tab-btn{padding:6px 12px;border:none;background:none;color:var(--text2);font-size:12px;cursor:pointer;border-radius:6px;transition:all .2s;font-family:inherit;letter-spacing:.3px;white-space:nowrap}
+nav{position:sticky;top:0;z-index:100;background:rgba(10,15,26,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 1rem}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px;gap:8px}
+.nav-logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.nav-logo-icon{width:32px;height:32px;background:linear-gradient(135deg,var(--orange),var(--red));border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#fff}
+.nav-logo-text{font-size:15px;font-weight:700}
+.nav-logo-sub{font-size:9px;color:var(--text2);letter-spacing:.5px;text-transform:uppercase}
+.nav-tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.nav-tabs::-webkit-scrollbar{display:none}
+.tab-btn{padding:6px 11px;border:none;background:none;color:var(--text2);font-size:11px;cursor:pointer;border-radius:6px;transition:all .2s;font-family:inherit;letter-spacing:.3px;white-space:nowrap}
 .tab-btn:hover{color:var(--text);background:var(--bg3)}
 .tab-btn.active{color:var(--blue);background:rgba(59,130,246,.15)}
-.nav-badge{padding:3px 10px;background:rgba(239,68,68,.15);color:var(--red);border:1px solid rgba(239,68,68,.3);border-radius:20px;font-size:11px;font-weight:600;letter-spacing:.5px}
+.nav-badge{padding:3px 10px;background:rgba(239,68,68,.15);color:var(--red);border:1px solid rgba(239,68,68,.3);border-radius:20px;font-size:10px;font-weight:600;letter-spacing:.5px;flex-shrink:0;animation:badgepulse 2s infinite}
+@keyframes badgepulse{0%,100%{opacity:1}50%{opacity:.6}}
 
 /* SECTIONS */
-.section{display:none;max-width:1100px;margin:0 auto;padding:2rem 1rem 4rem}
+.section{display:none;max-width:1200px;margin:0 auto;padding:2rem 1rem 4rem}
 .section.active{display:block}
+.section-header{margin-bottom:2rem}
+.section-tag{font-size:.7rem;text-transform:uppercase;letter-spacing:.8px;color:var(--blue);font-weight:600;margin-bottom:.5rem}
+.section-title{font-size:1.8rem;font-weight:800;letter-spacing:-.5px;margin-bottom:.5rem}
+.section-desc{font-size:.9rem;color:var(--text2);line-height:1.7;max-width:680px}
+.divider{height:1px;background:var(--border);margin:2rem 0}
+h3.sub-title{font-size:1rem;font-weight:700;margin-bottom:1rem;color:var(--text)}
 
 /* ── LANDING ── */
 .hero{text-align:center;padding:4rem 0 3rem}
@@ -42,31 +50,35 @@ h1.hero-title{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;letter-spacing:
 .hero-title span{background:linear-gradient(90deg,var(--orange),var(--red));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero-subtitle{font-size:clamp(1rem,2.5vw,1.3rem);color:var(--text2);margin-bottom:.8rem;letter-spacing:.5px}
 .hero-desc{max-width:640px;margin:0 auto 2.5rem;color:var(--text3);font-size:.95rem;line-height:1.7}
-.hero-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:linear-gradient(135deg,var(--orange),var(--red));border:none;border-radius:10px;color:#fff;font-size:1rem;font-weight:600;cursor:pointer;transition:transform .2s,box-shadow .2s;font-family:inherit}
+.hero-btns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.hero-btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;background:linear-gradient(135deg,var(--orange),var(--red));border:none;border-radius:10px;color:#fff;font-size:.95rem;font-weight:600;cursor:pointer;transition:transform .2s,box-shadow .2s;font-family:inherit}
 .hero-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(239,68,68,.35)}
-.hero-btn2{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:transparent;border:1px solid var(--border2);border-radius:10px;color:var(--text);font-size:1rem;cursor:pointer;transition:all .2s;font-family:inherit;margin-left:12px}
+.hero-btn2{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;background:transparent;border:1px solid var(--border2);border-radius:10px;color:var(--text);font-size:.95rem;cursor:pointer;transition:all .2s;font-family:inherit}
 .hero-btn2:hover{background:var(--bg3);border-color:var(--blue)}
-.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:3rem 0}
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1rem;margin:2rem 0}
+.stat-card{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center}
+.stat-num{font-size:1.8rem;font-weight:800;letter-spacing:-1px}
+.stat-num.red{color:var(--red)}.stat-num.orange{color:var(--orange)}.stat-num.yellow{color:var(--yellow)}.stat-num.green{color:var(--green)}.stat-num.blue{color:var(--blue)}
+.stat-label{font-size:.72rem;color:var(--text2);text-transform:uppercase;letter-spacing:.4px;margin-top:.3rem}
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:2rem 0}
 .pillar{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem;text-align:center;transition:border-color .2s}
 .pillar:hover{border-color:var(--border2)}
 .pillar-icon{font-size:2rem;margin-bottom:.75rem}
 .pillar-title{font-size:1rem;font-weight:700;margin-bottom:.4rem}
 .pillar-desc{font-size:.85rem;color:var(--text2);line-height:1.6}
-.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:2rem 0}
-.stat-card{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center}
-.stat-num{font-size:1.8rem;font-weight:800;letter-spacing:-1px}
-.stat-num.red{color:var(--red)}.stat-num.orange{color:var(--orange)}.stat-num.yellow{color:var(--yellow)}.stat-num.green{color:var(--green)}
-.stat-label{font-size:.75rem;color:var(--text2);text-transform:uppercase;letter-spacing:.5px;margin-top:.3rem}
 
-/* ── APP PROTOTYPE ── */
+/* ── APP ── */
 .app-frame{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;align-items:flex-start}
-.phone{width:340px;background:#0d1929;border:2px solid #2a3a55;border-radius:40px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.6)}
+.phone{width:340px;background:#0d1929;border:2px solid #2a3a55;border-radius:40px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.6);flex-shrink:0}
 .phone-status{display:flex;justify-content:space-between;align-items:center;padding:12px 20px 4px;font-size:10px;color:var(--text2)}
 .phone-screen{min-height:620px;position:relative}
-.app-screen{display:none;flex-direction:column;min-height:620px}
+.app-screen{display:none;flex-direction:column;min-height:620px;animation:fadeIn .25s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 .app-screen.active{display:flex}
+
+/* splash */
 .screen-splash{background:linear-gradient(180deg,#0a1628,#0d1f3d);align-items:center;justify-content:center;text-align:center;flex:1}
-.splash-logo{width:80px;height:80px;background:linear-gradient(135deg,var(--orange),var(--red));border-radius:24px;margin:0 auto 1.2rem;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:900;color:#fff;letter-spacing:1px}
+.splash-logo{width:80px;height:80px;background:linear-gradient(135deg,var(--orange),var(--red));border-radius:24px;margin:0 auto 1.2rem;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:900;color:#fff}
 .splash-title{font-size:2rem;font-weight:900;letter-spacing:-1px}
 .splash-sub{font-size:.7rem;color:var(--text2);letter-spacing:2px;text-transform:uppercase;margin:.3rem 0 2rem}
 .app-btn{padding:11px 24px;border:none;border-radius:10px;font-size:.85rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all .2s}
@@ -74,115 +86,176 @@ h1.hero-title{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;letter-spacing:
 .app-btn-outline{background:transparent;border:1px solid var(--border2);color:var(--text);margin-top:.6rem}
 .app-btn:hover{filter:brightness(1.1);transform:translateY(-1px)}
 .app-nav-bar{background:#0d1929;border-top:1px solid var(--border);padding:8px 0 10px;display:flex;justify-content:space-around}
-.app-nav-item{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;padding:0 12px;color:var(--text3);transition:color .2s;font-size:9px;border:none;background:none;font-family:inherit}
+.app-nav-item{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;padding:0 8px;color:var(--text3);transition:color .2s;font-size:8px;border:none;background:none;font-family:inherit}
 .app-nav-item.active{color:var(--blue)}
-.app-nav-item svg{width:20px;height:20px}
+.app-nav-item svg{width:18px;height:18px}
+
 /* map */
 .map-area{flex:1;position:relative;background:#0d1829;overflow:hidden}
 .map-svg{width:100%;height:100%;position:absolute;top:0;left:0}
-.map-top-bar{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:rgba(13,24,41,.9);position:relative;z-index:2}
-.map-top-bar-title{font-size:.75rem;font-weight:700;letter-spacing:.5px}
-.chip{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:.65rem;font-weight:600;letter-spacing:.3px}
+.map-top-bar{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:rgba(13,24,41,.9);position:relative;z-index:2;gap:6px}
+.map-top-bar-title{font-size:.72rem;font-weight:700;letter-spacing:.3px;flex-shrink:0}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:20px;font-size:.6rem;font-weight:600;letter-spacing:.3px;white-space:nowrap}
 .chip.offline{background:rgba(234,179,8,.12);color:var(--yellow);border:1px solid rgba(234,179,8,.25)}
 .chip.gps{background:rgba(34,197,94,.12);color:var(--green);border:1px solid rgba(34,197,94,.25)}
 .chip.red{background:rgba(239,68,68,.12);color:var(--red);border:1px solid rgba(239,68,68,.25)}
-.chip.orange{background:rgba(249,115,22,.12);color:var(--orange);border:1px solid rgba(249,115,22,.25)}
+.chip.cyan{background:rgba(6,182,212,.12);color:var(--cyan);border:1px solid rgba(6,182,212,.25)}
 .chip::before{content:'';width:5px;height:5px;border-radius:50%;background:currentColor}
-.map-bottom-panel{padding:10px 12px;background:rgba(13,24,41,.95);border-top:1px solid var(--border)}
+.map-bottom-panel{padding:10px 12px;background:rgba(13,24,41,.97);border-top:1px solid var(--border)}
 .risk-card{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:10px;padding:10px 12px;margin-bottom:8px}
-.risk-card-label{font-size:.65rem;color:var(--red);letter-spacing:.5px;text-transform:uppercase;margin-bottom:2px}
-.risk-card-val{font-size:1.1rem;font-weight:800;color:var(--red)}
-.risk-card-sub{font-size:.65rem;color:var(--text2)}
-.evac-btn{width:100%;padding:12px;background:linear-gradient(135deg,var(--red),#b91c1c);border:none;border-radius:10px;color:#fff;font-size:.9rem;font-weight:700;cursor:pointer;font-family:inherit;letter-spacing:.5px;transition:all .2s}
+.risk-card-label{font-size:.62rem;color:var(--red);letter-spacing:.5px;text-transform:uppercase;margin-bottom:2px}
+.risk-card-val{font-size:1rem;font-weight:800;color:var(--red)}
+.risk-card-sub{font-size:.63rem;color:var(--text2);margin-top:2px}
+.evac-btn{width:100%;padding:12px;background:linear-gradient(135deg,var(--red),#b91c1c);border:none;border-radius:10px;color:#fff;font-size:.88rem;font-weight:700;cursor:pointer;font-family:inherit;letter-spacing:.5px;transition:all .2s}
 .evac-btn:hover{filter:brightness(1.1)}
-/* alert screen */
-.screen-alert{background:#120a0a;flex:1;padding:16px}
+
+/* countdown */
+.countdown-bar{background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);border-radius:10px;padding:10px 12px;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.countdown-num{font-size:1.6rem;font-weight:900;color:var(--red);letter-spacing:-1px;min-width:52px;font-variant-numeric:tabular-nums}
+.countdown-label{font-size:.65rem;color:var(--text2);line-height:1.5}
+.countdown-label strong{color:var(--orange);display:block}
+
+/* map legend */
+.map-legend{display:flex;gap:6px;padding:6px 12px;background:rgba(13,24,41,.9);flex-wrap:wrap}
+.legend-item{display:flex;align-items:center;gap:4px;font-size:.6rem;color:var(--text2)}
+.legend-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0}
+
+/* route progress */
+.route-progress{padding:8px 12px;background:rgba(34,197,94,.05);border-bottom:1px solid rgba(34,197,94,.15)}
+.route-progress-label{display:flex;justify-content:space-between;font-size:.65rem;color:var(--text2);margin-bottom:4px}
+.route-progress-bar{height:5px;background:var(--bg3);border-radius:3px;overflow:hidden}
+.route-progress-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--cyan));border-radius:3px;width:35%;transition:width .5s}
+
+/* alert */
+.screen-alert{background:#120a0a;flex:1;padding:16px;overflow-y:auto}
 .alert-header{display:flex;align-items:center;gap:10px;margin-bottom:16px}
 .alert-icon{width:44px;height:44px;background:var(--red);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
 .alert-level{font-size:1.1rem;font-weight:800;color:var(--red)}
 .alert-time{font-size:.7rem;color:var(--text2);margin-top:2px}
 .alert-msg{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:12px;padding:14px;margin-bottom:12px}
-.alert-msg-title{font-size:.75rem;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
-.alert-msg-text{font-size:.85rem;line-height:1.6;color:var(--text)}
-.alert-steps{margin-bottom:12px}
-.alert-step{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)}
+.alert-msg-title{font-size:.72rem;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.alert-msg-text{font-size:.82rem;line-height:1.6;color:var(--text)}
+.alert-step{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--border)}
 .alert-step:last-child{border:none}
 .step-num{width:22px;height:22px;border-radius:50%;background:var(--red);color:#fff;font-size:.7rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.step-text{font-size:.8rem;line-height:1.4}
-/* route screen */
-.screen-route{background:#0a1020;flex:1}
-.route-header{padding:12px 14px;background:rgba(6,182,212,.06);border-bottom:1px solid rgba(6,182,212,.15)}
-.route-header-label{font-size:.65rem;color:var(--cyan);text-transform:uppercase;letter-spacing:.5px}
-.route-header-title{font-size:1rem;font-weight:700;color:var(--cyan)}
-.route-map{height:240px;background:#0d1829;position:relative;overflow:hidden}
-.route-info{padding:12px 14px}
-.route-stat-row{display:flex;gap:8px;margin-bottom:10px}
-.route-stat{flex:1;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 12px;text-align:center}
-.route-stat-val{font-size:1.1rem;font-weight:800;color:var(--cyan)}
-.route-stat-label{font-size:.65rem;color:var(--text2);text-transform:uppercase;letter-spacing:.3px;margin-top:2px}
-.route-waypoints{margin-bottom:10px}
-.waypoint{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--border)}
+.step-text{font-size:.78rem;line-height:1.4}
+
+/* route */
+.route-header{padding:10px 14px;background:rgba(6,182,212,.06);border-bottom:1px solid rgba(6,182,212,.15)}
+.route-header-label{font-size:.62rem;color:var(--cyan);text-transform:uppercase;letter-spacing:.5px}
+.route-header-title{font-size:.92rem;font-weight:700;color:var(--cyan)}
+.route-map{height:220px;background:#0d1829;position:relative;overflow:hidden}
+.route-info{padding:10px 14px}
+.route-stat-row{display:flex;gap:6px;margin-bottom:10px}
+.route-stat{flex:1;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:8px 10px;text-align:center}
+.route-stat-val{font-size:1rem;font-weight:800;color:var(--cyan)}
+.route-stat-label{font-size:.6rem;color:var(--text2);text-transform:uppercase;letter-spacing:.3px;margin-top:2px}
+.waypoint{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)}
 .waypoint:last-child{border:none}
-.wp-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.wp-label{font-size:.8rem;font-weight:600}
-.wp-sub{font-size:.65rem;color:var(--text2)}
+.wp-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.wp-label{font-size:.78rem;font-weight:600}
+.wp-sub{font-size:.63rem;color:var(--text2)}
+
 /* shelters */
-.screen-shelters{background:#080f1a;flex:1;padding:14px}
-.shelter-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:8px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:border-color .2s}
+.shelter-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:11px;margin-bottom:8px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:border-color .2s}
 .shelter-card:hover{border-color:var(--blue)}
-.shelter-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
-.shelter-icon.green{background:rgba(34,197,94,.15)}
-.shelter-icon.yellow{background:rgba(234,179,8,.15)}
-.shelter-name{font-size:.85rem;font-weight:700;margin-bottom:2px}
-.shelter-dist{font-size:.7rem;color:var(--text2)}
-.shelter-cap{margin-left:auto;text-align:right}
-.shelter-cap-num{font-size:.85rem;font-weight:700;color:var(--green)}
-.shelter-cap-label{font-size:.65rem;color:var(--text2)}
-/* tech screen */
-.screen-tech{background:#060d1a;flex:1;padding:14px}
+.shelter-icon{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.shelter-name{font-size:.82rem;font-weight:700;margin-bottom:2px}
+.shelter-dist{font-size:.67rem;color:var(--text2)}
+.shelter-cap{margin-left:auto;text-align:right;flex-shrink:0}
+.shelter-cap-num{font-size:.82rem;font-weight:700;color:var(--green)}
+.shelter-cap-label{font-size:.62rem;color:var(--text2)}
+
+/* tech */
 .tech-layer{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin-bottom:8px}
 .tech-layer-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
-.tech-layer-name{font-size:.75rem;font-weight:700;letter-spacing:.3px}
-.tech-layer-status{font-size:.65rem}
+.tech-layer-name{font-size:.72rem;font-weight:700;letter-spacing:.3px}
 .tech-progress{height:4px;background:var(--bg3);border-radius:2px;overflow:hidden}
-.tech-progress-fill{height:100%;border-radius:2px;transition:width .6s}
-.tech-data-row{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
-.tech-datum{font-size:.65rem;color:var(--text2)}
+.tech-progress-fill{height:100%;border-radius:2px}
+.tech-data-row{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:6px}
+.tech-datum{font-size:.62rem;color:var(--text2)}
 .tech-datum span{color:var(--text);font-weight:600}
+
+/* dashboard */
+.dash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.8rem;margin-bottom:1.2rem}
+.dash-card{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:1rem;text-align:center}
+.dash-num{font-size:1.6rem;font-weight:800;letter-spacing:-1px}
+.dash-label{font-size:.68rem;color:var(--text2);text-transform:uppercase;letter-spacing:.4px;margin-top:.3rem}
+.dash-map{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:1.2rem}
+.dash-map-header{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.dash-map-title{font-size:.85rem;font-weight:700}
+.dash-alerts{display:flex;flex-direction:column;gap:.7rem}
+.dash-alert-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 14px;display:flex;align-items:center;gap:12px}
+.dash-alert-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.dash-alert-title{font-size:.82rem;font-weight:700;margin-bottom:2px}
+.dash-alert-sub{font-size:.72rem;color:var(--text2)}
+.dash-alert-time{margin-left:auto;font-size:.7rem;color:var(--text3);flex-shrink:0}
+
 /* side panel */
-.app-side-panel{flex:1;min-width:220px;max-width:300px}
-.screen-nav-buttons{display:flex;flex-direction:column;gap:.6rem}
-.screen-nav-btn{width:100%;padding:10px 14px;background:var(--card);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:.85rem;cursor:pointer;font-family:inherit;text-align:left;transition:all .2s;display:flex;align-items:center;gap:8px}
+.app-side-panel{flex:1;min-width:200px;max-width:280px}
+.screen-nav-buttons{display:flex;flex-direction:column;gap:.5rem}
+.screen-nav-btn{width:100%;padding:9px 13px;background:var(--card);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:.82rem;cursor:pointer;font-family:inherit;text-align:left;transition:all .2s;display:flex;align-items:center;gap:8px}
 .screen-nav-btn:hover{background:var(--bg3);border-color:var(--blue);color:var(--blue)}
 .screen-nav-btn.active{background:rgba(59,130,246,.1);border-color:var(--blue);color:var(--blue);font-weight:600}
-.screen-desc{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin-top:1rem;font-size:.8rem;color:var(--text2);line-height:1.7}
-.screen-desc strong{color:var(--text);display:block;margin-bottom:.4rem;font-size:.85rem}
+.screen-desc{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:13px;margin-top:1rem;font-size:.78rem;color:var(--text2);line-height:1.7}
+.screen-desc strong{color:var(--text);display:block;margin-bottom:.4rem;font-size:.82rem}
 
-/* ── FEATURES ── */
+/* ── CASOS REAIS ── */
+.casos-hero{background:linear-gradient(135deg,rgba(239,68,68,.08),rgba(249,115,22,.05));border:1px solid rgba(239,68,68,.2);border-radius:16px;padding:2rem;margin-bottom:2rem;text-align:center}
+.casos-hero-title{font-size:1.4rem;font-weight:800;margin-bottom:.5rem}
+.casos-hero-desc{font-size:.88rem;color:var(--text2);line-height:1.7;max-width:600px;margin:0 auto}
+.casos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.2rem;margin-bottom:2rem}
+.caso-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:border-color .2s}
+.caso-card:hover{border-color:var(--border2)}
+.caso-header{padding:16px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:12px}
+.caso-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.caso-nome{font-size:1rem;font-weight:700;margin-bottom:2px}
+.caso-data{font-size:.72rem;color:var(--text2)}
+.caso-body{padding:16px}
+.caso-stats{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:1rem}
+.caso-stat{background:var(--card2);border-radius:8px;padding:.7rem;text-align:center}
+.caso-stat-num{font-size:1.1rem;font-weight:800}
+.caso-stat-label{font-size:.65rem;color:var(--text2);margin-top:2px}
+.caso-desc{font-size:.8rem;color:var(--text2);line-height:1.6;margin-bottom:.8rem}
+.caso-segi{background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.2);border-radius:10px;padding:10px 12px}
+.caso-segi-label{font-size:.65rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.3rem}
+.caso-segi-text{font-size:.78rem;color:var(--text);line-height:1.5}
+
+/* impacto */
+.impacto-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:1.5rem 0}
+.impacto-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.4rem;text-align:center}
+.impacto-num{font-size:2rem;font-weight:900;letter-spacing:-1px;margin-bottom:.3rem}
+.impacto-label{font-size:.78rem;color:var(--text2);line-height:1.5}
+.impacto-fonte{font-size:.65rem;color:var(--text3);margin-top:.4rem}
+
+/* simulator */
+.sim-controls{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1.5rem}
+.sim-title{font-size:.82rem;font-weight:700;margin-bottom:1rem;color:var(--text2);text-transform:uppercase;letter-spacing:.5px}
+.sim-btn-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1rem}
+.sim-btn{padding:8px 16px;border:1px solid var(--border2);border-radius:8px;background:var(--bg3);color:var(--text);font-size:.8rem;cursor:pointer;font-family:inherit;transition:all .2s}
+.sim-btn:hover{border-color:var(--blue);color:var(--blue)}
+.sim-btn.active{background:rgba(239,68,68,.15);border-color:var(--red);color:var(--red);font-weight:600}
+.sim-status{background:var(--card2);border-radius:10px;padding:1rem;font-size:.82rem;color:var(--text2);line-height:1.7;border-left:3px solid var(--border2)}
+
+/* features */
 .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin:1.5rem 0}
 .feat-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.4rem;transition:border-color .2s}
 .feat-card:hover{border-color:var(--border2)}
 .feat-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:1rem}
-.feat-icon.blue{background:rgba(59,130,246,.15)}
-.feat-icon.orange{background:rgba(249,115,22,.15)}
-.feat-icon.red{background:rgba(239,68,68,.15)}
-.feat-icon.green{background:rgba(34,197,94,.15)}
-.feat-icon.cyan{background:rgba(6,182,212,.15)}
-.feat-icon.yellow{background:rgba(234,179,8,.15)}
-.feat-icon.purple{background:rgba(168,85,247,.15)}
+.feat-icon.blue{background:rgba(59,130,246,.15)}.feat-icon.orange{background:rgba(249,115,22,.15)}.feat-icon.red{background:rgba(239,68,68,.15)}.feat-icon.green{background:rgba(34,197,94,.15)}.feat-icon.cyan{background:rgba(6,182,212,.15)}.feat-icon.yellow{background:rgba(234,179,8,.15)}.feat-icon.purple{background:rgba(168,85,247,.15)}
 .feat-name{font-size:.95rem;font-weight:700;margin-bottom:.4rem}
 .feat-desc{font-size:.82rem;color:var(--text2);line-height:1.6}
 .feat-tags{margin-top:.8rem;display:flex;flex-wrap:wrap;gap:.4rem}
-.feat-tag{font-size:.65rem;padding:2px 8px;border-radius:20px;background:var(--bg3);color:var(--text2);border:1px solid var(--border)}
+.feat-tag{font-size:.62rem;padding:2px 7px;border-radius:20px;background:var(--bg3);color:var(--text2);border:1px solid var(--border)}
 
-/* ── FLOW ── */
+/* flow */
 .flow-row{display:flex;align-items:flex-start;gap:0;margin:2rem 0;overflow-x:auto;padding-bottom:.5rem}
-.flow-step{display:flex;flex-direction:column;align-items:center;text-align:center;min-width:120px;flex:1}
-.flow-circle{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;border:2px solid;position:relative;flex-shrink:0}
-.flow-num{position:absolute;top:-4px;right:-4px;width:18px;height:18px;border-radius:50%;font-size:.6rem;font-weight:700;display:flex;align-items:center;justify-content:center;color:#fff}
-.flow-label{font-size:.8rem;font-weight:700;margin-top:.7rem}
-.flow-sub{font-size:.7rem;color:var(--text2);margin-top:.2rem;line-height:1.4}
-.flow-arrow{font-size:1.2rem;color:var(--text3);padding-top:18px;flex-shrink:0}
+.flow-step{display:flex;flex-direction:column;align-items:center;text-align:center;min-width:110px;flex:1}
+.flow-circle{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;border:2px solid;position:relative;flex-shrink:0}
+.flow-num{position:absolute;top:-4px;right:-4px;width:17px;height:17px;border-radius:50%;font-size:.6rem;font-weight:700;display:flex;align-items:center;justify-content:center;color:#fff}
+.flow-label{font-size:.78rem;font-weight:700;margin-top:.6rem}
+.flow-sub{font-size:.68rem;color:var(--text2);margin-top:.2rem;line-height:1.4}
+.flow-arrow{font-size:1rem;color:var(--text3);padding-top:16px;flex-shrink:0}
 .fc1{border-color:var(--blue);background:rgba(59,130,246,.1);color:var(--blue)}
 .fc2{border-color:var(--cyan);background:rgba(6,182,212,.1);color:var(--cyan)}
 .fc3{border-color:var(--yellow);background:rgba(234,179,8,.1);color:var(--yellow)}
@@ -190,55 +263,26 @@ h1.hero-title{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;letter-spacing:
 .fc5{border-color:var(--green);background:rgba(34,197,94,.1);color:var(--green)}
 .fnum1{background:var(--blue)}.fnum2{background:var(--cyan)}.fnum3{background:var(--yellow)}.fnum4{background:var(--orange)}.fnum5{background:var(--green)}
 
-/* ── ARCHITECTURE ── */
-.arch-diagram{display:flex;flex-direction:column;gap:1rem;margin:2rem 0}
-.arch-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+/* arch */
 .arch-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.3rem;position:relative;overflow:hidden}
 .arch-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
 .arch-card.frontend::before{background:linear-gradient(90deg,var(--blue),var(--cyan))}
 .arch-card.backend::before{background:linear-gradient(90deg,var(--orange),var(--yellow))}
 .arch-card.db::before{background:linear-gradient(90deg,var(--green),var(--cyan))}
 .arch-card.gis::before{background:linear-gradient(90deg,var(--red),var(--orange))}
-.arch-label{font-size:.65rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.4rem;font-weight:600}
+.arch-label{font-size:.62rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.4rem;font-weight:600}
 .arch-label.frontend{color:var(--blue)}.arch-label.backend{color:var(--orange)}.arch-label.db{color:var(--green)}.arch-label.gis{color:var(--red)}
-.arch-title{font-size:.95rem;font-weight:700;margin-bottom:.6rem}
-.arch-items{list-style:none;font-size:.8rem;color:var(--text2);line-height:1.8}
+.arch-title{font-size:.92rem;font-weight:700;margin-bottom:.6rem}
+.arch-items{list-style:none;font-size:.78rem;color:var(--text2);line-height:1.8}
 .arch-items li::before{content:'›';margin-right:6px;color:var(--text3)}
 .arch-tech-row{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem}
-.arch-tech{font-size:.65rem;padding:2px 8px;border-radius:6px;font-weight:600;letter-spacing:.3px}
+.arch-tech{font-size:.62rem;padding:2px 7px;border-radius:6px;font-weight:600;letter-spacing:.3px}
 .t-flutter{background:rgba(59,130,246,.15);color:var(--blue)}.t-python{background:rgba(234,179,8,.15);color:var(--yellow)}.t-fastapi{background:rgba(6,182,212,.15);color:var(--cyan)}.t-pg{background:rgba(34,197,94,.15);color:var(--green)}.t-qgis{background:rgba(249,115,22,.15);color:var(--orange)}.t-gdal{background:rgba(239,68,68,.15);color:var(--red)}
-.arch-connector{display:flex;justify-content:center;align-items:center;gap:8px;color:var(--text3);font-size:.75rem;padding:.3rem 0}
+.arch-connector{display:flex;justify-content:center;align-items:center;gap:8px;color:var(--text3);font-size:.72rem;padding:.3rem 0}
 .arch-connector::before,.arch-connector::after{content:'';flex:1;height:1px;background:var(--border);max-width:200px}
+.arch-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
 
-/* ── MVP ── */
-.mvp-box{background:linear-gradient(135deg,rgba(249,115,22,.05),rgba(239,68,68,.05));border:1px solid rgba(249,115,22,.3);border-radius:16px;padding:2rem;margin:1.5rem 0}
-.mvp-header{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem}
-.mvp-badge{background:linear-gradient(135deg,var(--orange),var(--red));border-radius:8px;padding:8px 14px;font-size:.75rem;font-weight:700;color:#fff;letter-spacing:.5px}
-.mvp-title{font-size:1.2rem;font-weight:700}
-.mvp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
-.mvp-section{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;padding:1rem}
-.mvp-section-title{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--orange);margin-bottom:.6rem}
-.mvp-list{font-size:.82rem;color:var(--text2);line-height:1.8;list-style:none}
-.mvp-list li::before{content:'✓';margin-right:6px;color:var(--green)}
-
-/* ── DATABASE ── */
-.db-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:1.5rem 0}
-.db-table{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
-.db-table-header{padding:10px 14px;background:rgba(34,197,94,.08);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
-.db-table-name{font-size:.85rem;font-weight:700;color:var(--green)}
-.db-table-icon{font-size:.9rem}
-.db-col{display:flex;align-items:center;justify-content:space-between;padding:7px 14px;border-bottom:1px solid rgba(30,58,95,.5);font-size:.78rem}
-.db-col:last-child{border:none}
-.db-col-name{color:var(--text)}
-.db-col-type{font-size:.7rem;color:var(--cyan);font-weight:600;background:rgba(6,182,212,.1);padding:1px 6px;border-radius:4px}
-.db-col-pk{color:var(--yellow);font-size:.65rem;font-weight:700;background:rgba(234,179,8,.1);padding:1px 6px;border-radius:4px}
-.data-sources{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.8rem;margin:1rem 0}
-.data-src{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center}
-.data-src-icon{font-size:1.5rem;margin-bottom:.5rem}
-.data-src-name{font-size:.82rem;font-weight:700;margin-bottom:.3rem}
-.data-src-desc{font-size:.72rem;color:var(--text2)}
-
-/* ── ROADMAP ── */
+/* roadmap */
 .roadmap{position:relative;margin:2rem 0}
 .roadmap-line{position:absolute;left:26px;top:20px;bottom:20px;width:2px;background:linear-gradient(180deg,var(--blue),var(--green));border-radius:1px}
 .rm-item{display:flex;gap:1.2rem;margin-bottom:1.5rem;position:relative}
@@ -249,50 +293,50 @@ h1.hero-title{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;letter-spacing:
 .rm-content{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1rem 1.2rem;flex:1}
 .rm-title{font-size:.9rem;font-weight:700;margin-bottom:.3rem}
 .rm-desc{font-size:.8rem;color:var(--text2);line-height:1.5}
-.rm-tag{display:inline-block;font-size:.65rem;padding:2px 8px;border-radius:20px;margin-top:.5rem;font-weight:600}
+.rm-tag{display:inline-block;font-size:.62rem;padding:2px 8px;border-radius:20px;margin-top:.5rem;font-weight:600}
 .rm-tag.done{background:rgba(34,197,94,.12);color:var(--green);border:1px solid rgba(34,197,94,.25)}
 .rm-tag.active{background:rgba(249,115,22,.12);color:var(--orange);border:1px solid rgba(249,115,22,.25)}
 .rm-tag.future{background:var(--bg3);color:var(--text3);border:1px solid var(--border)}
 
-/* ── RISKS ── */
+/* risks */
 .risk-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin:1.5rem 0}
 .risk-card2{background:var(--card);border-radius:14px;padding:1.4rem;border-left:4px solid}
-.risk-card2.high{border-color:var(--red)}
-.risk-card2.medium{border-color:var(--orange)}
-.risk-card2.low{border-color:var(--yellow)}
-.risk-level{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.4rem}
+.risk-card2.high{border-color:var(--red)}.risk-card2.medium{border-color:var(--orange)}.risk-card2.low{border-color:var(--yellow)}
+.risk-level{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.4rem}
 .risk-level.high{color:var(--red)}.risk-level.medium{color:var(--orange)}.risk-level.low{color:var(--yellow)}
 .risk-title{font-size:.92rem;font-weight:700;margin-bottom:.4rem}
 .risk-desc{font-size:.82rem;color:var(--text2);line-height:1.6}
 
-/* SHARED */
-.section-header{margin-bottom:2rem}
-.section-tag{font-size:.7rem;text-transform:uppercase;letter-spacing:.8px;color:var(--blue);font-weight:600;margin-bottom:.5rem}
-.section-title{font-size:1.8rem;font-weight:800;letter-spacing:-.5px;margin-bottom:.5rem}
-.section-desc{font-size:.9rem;color:var(--text2);line-height:1.7;max-width:640px}
-.divider{height:1px;background:var(--border);margin:2rem 0}
-h3.sub-title{font-size:1rem;font-weight:700;margin-bottom:1rem;color:var(--text)}
+/* db */
+.db-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem;margin:1.5rem 0}
+.db-table{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.db-table-header{padding:10px 14px;background:rgba(34,197,94,.08);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.db-table-name{font-size:.85rem;font-weight:700;color:var(--green)}
+.db-col{display:flex;align-items:center;justify-content:space-between;padding:6px 14px;border-bottom:1px solid rgba(30,58,95,.5);font-size:.76rem}
+.db-col:last-child{border:none}
+.db-col-type{font-size:.68rem;color:var(--cyan);font-weight:600;background:rgba(6,182,212,.1);padding:1px 6px;border-radius:4px}
+.db-col-pk{color:var(--yellow);font-size:.62rem;font-weight:700;background:rgba(234,179,8,.1);padding:1px 6px;border-radius:4px}
 </style>
 </head>
 <body>
-<h2 class="sr-only">SEGI — Protótipo interativo do Sistema de Evacuação Geoespacial Inteligente</h2>
+<h2 class="sr-only">SEGI v2 — Protótipo interativo do Sistema de Evacuação Geoespacial Inteligente</h2>
 
 <nav>
 <div class="nav-inner">
   <div class="nav-logo">
-    <div class="nav-logo-icon">SE</div>
+    <div class="nav-logo-icon">SE<br style="line-height:.5">GI</div>
     <div>
       <div class="nav-logo-text">SEGI</div>
-      <div class="nav-logo-sub">Disaster Response Platform</div>
+      <div class="nav-logo-sub">Disaster Response</div>
     </div>
   </div>
   <div class="nav-tabs">
     <button class="tab-btn active" onclick="showTab('home')">Produto</button>
     <button class="tab-btn" onclick="showTab('app')">App</button>
-    <button class="tab-btn" onclick="showTab('features')">Funcionalidades</button>
-    <button class="tab-btn" onclick="showTab('flow')">Fluxo</button>
+    <button class="tab-btn" onclick="showTab('dashboard')">Painel Defesa Civil</button>
+    <button class="tab-btn" onclick="showTab('casos')">Casos Reais</button>
+    <button class="tab-btn" onclick="showTab('impacto')">Impacto</button>
     <button class="tab-btn" onclick="showTab('arch')">Arquitetura</button>
-    <button class="tab-btn" onclick="showTab('mvp')">MVP</button>
     <button class="tab-btn" onclick="showTab('roadmap')">Roadmap</button>
   </div>
   <div class="nav-badge">● ALERTA ATIVO</div>
@@ -306,16 +350,18 @@ h3.sub-title{font-size:1rem;font-weight:700;margin-bottom:1rem;color:var(--text)
     <h1 class="hero-title">SEGI<br><span>Evacuação Inteligente</span></h1>
     <p class="hero-subtitle">Sistema de Evacuação Geoespacial Inteligente</p>
     <p class="hero-desc">Plataforma de resposta a emergências com inteligência artificial e dados geoespaciais. Guia populações em risco com rotas de fuga em tempo real — mesmo sem internet.</p>
-    <div>
+    <div class="hero-btns">
       <button class="hero-btn" onclick="showTab('app')">► Abrir Protótipo</button>
-      <button class="hero-btn2" onclick="showTab('arch')">Ver Arquitetura</button>
+      <button class="hero-btn2" onclick="showTab('casos')">Ver Casos Reais</button>
+      <button class="hero-btn2" onclick="showTab('impacto')">Impacto</button>
     </div>
   </div>
   <div class="stats-row">
     <div class="stat-card"><div class="stat-num red">2.8M</div><div class="stat-label">pessoas em risco no Brasil</div></div>
-    <div class="stat-card"><div class="stat-num orange">48</div><div class="stat-label">barragens monitoradas</div></div>
+    <div class="stat-card"><div class="stat-num orange">900+</div><div class="stat-label">mortes evitáveis (2000–2024)</div></div>
     <div class="stat-card"><div class="stat-num yellow">&lt;30s</div><div class="stat-label">tempo de alerta</div></div>
     <div class="stat-card"><div class="stat-num green">100%</div><div class="stat-label">funcional offline</div></div>
+    <div class="stat-card"><div class="stat-num blue">94%</div><div class="stat-label">acurácia do modelo GeoIA</div></div>
   </div>
   <div class="pillars">
     <div class="pillar">
@@ -334,18 +380,6 @@ h3.sub-title{font-size:1rem;font-weight:700;margin-bottom:1rem;color:var(--text)
       <div class="pillar-desc">Mapas e rotas pré-carregadas no dispositivo. Funciona sem sinal — essencial em zonas de desastre.</div>
     </div>
   </div>
-  <div class="divider"></div>
-  <div style="text-align:center;padding:1rem 0 2rem">
-    <div class="section-tag">Tecnologia Crítica</div>
-    <div class="section-title">Não apenas informativo.<br>Um sistema ativo de salvamento.</div>
-    <div class="section-desc" style="margin:.8rem auto">O SEGI combina GIS profissional, inteligência artificial e operação offline para entregar rotas de evacuação confiáveis mesmo nos piores cenários de desastre.</div>
-  </div>
-  <div class="features-grid">
-    <div class="feat-card"><div class="feat-icon blue">📍</div><div class="feat-name">GPS + Mapa Offline</div><div class="feat-desc">Localização precisa mesmo sem internet. Mapas armazenados localmente com tiles vetoriais.</div></div>
-    <div class="feat-card"><div class="feat-icon red">⚠</div><div class="feat-name">Alertas de Emergência</div><div class="feat-desc">Push notification e SMS de fallback. Alerta em menos de 30 segundos após detecção de risco crítico.</div></div>
-    <div class="feat-card"><div class="feat-icon orange">🧭</div><div class="feat-name">Rotas de Fuga Inteligentes</div><div class="feat-desc">pgRouting + GeoIA calculam o caminho mais seguro considerando altitude, velocidade de inundação e capacidade viária.</div></div>
-    <div class="feat-card"><div class="feat-icon green">🏥</div><div class="feat-name">Abrigos Georreferenciados</div><div class="feat-desc">Pontos de abrigo com capacidade, distância e status de ocupação em tempo real.</div></div>
-  </div>
 </div>
 
 <!-- ══ APP ══ -->
@@ -353,14 +387,14 @@ h3.sub-title{font-size:1rem;font-weight:700;margin-bottom:1rem;color:var(--text)
   <div class="section-header">
     <div class="section-tag">Protótipo Interativo</div>
     <div class="section-title">Simulação do App Mobile</div>
-    <div class="section-desc">Navegue pelas telas do SEGI. Clique nos botões do painel lateral para trocar de tela.</div>
+    <div class="section-desc">Navegue pelas telas do SEGI. Use os botões do painel lateral para trocar de tela.</div>
   </div>
   <div class="app-frame">
     <div class="phone">
       <div class="phone-status">
-        <span>09:41</span>
+        <span id="clock">09:41</span>
         <span style="display:flex;gap:6px">
-          <span id="offline-chip" style="color:var(--yellow);font-size:9px">OFFLINE ●</span>
+          <span style="color:var(--yellow);font-size:9px">OFFLINE ●</span>
           <span style="color:var(--green)">GPS ●</span>
           <span>▐▐▐ 72%</span>
         </span>
@@ -382,84 +416,74 @@ h3.sub-title{font-size:1rem;font-weight:700;margin-bottom:1rem;color:var(--text)
         <div id="screen-map" class="app-screen" style="flex-direction:column">
           <div class="map-top-bar">
             <div class="map-top-bar-title">SEGI · Mapa de Risco</div>
-            <div style="display:flex;gap:5px">
+            <div style="display:flex;gap:4px">
               <span class="chip offline">Offline</span>
               <span class="chip gps">GPS</span>
-              <span class="chip red">Risco CRÍTICO</span>
+              <span class="chip red">Crítico</span>
             </div>
           </div>
+          <div class="map-legend">
+            <div class="legend-item"><div class="legend-dot" style="background:rgba(34,197,94,.7)"></div>Baixo</div>
+            <div class="legend-item"><div class="legend-dot" style="background:rgba(234,179,8,.7)"></div>Médio</div>
+            <div class="legend-item"><div class="legend-dot" style="background:rgba(249,115,22,.7)"></div>Alto</div>
+            <div class="legend-item"><div class="legend-dot" style="background:rgba(239,68,68,.7)"></div>Crítico</div>
+            <div class="legend-item"><div class="legend-dot" style="background:var(--green);border-radius:50%"></div>Rota segura</div>
+          </div>
           <div class="map-area">
-            <svg class="map-svg" viewBox="0 0 340 280" xmlns="http://www.w3.org/2000/svg">
-              <!-- base roads -->
-              <line x1="0" y1="140" x2="340" y2="140" stroke="#1e3a5f" stroke-width="8"/>
-              <line x1="170" y1="0" x2="170" y2="280" stroke="#1e3a5f" stroke-width="8"/>
-              <line x1="0" y1="60" x2="340" y2="190" stroke="#162d4d" stroke-width="4"/>
-              <line x1="0" y1="200" x2="340" y2="80" stroke="#162d4d" stroke-width="4"/>
-              <!-- risk zones -->
-              <ellipse cx="80" cy="180" rx="70" ry="55" fill="rgba(239,68,68,0.28)" stroke="rgba(239,68,68,.5)" stroke-width="1.5" stroke-dasharray="4,2"/>
-              <ellipse cx="200" cy="190" rx="55" ry="40" fill="rgba(249,115,22,0.22)" stroke="rgba(249,115,22,.4)" stroke-width="1.5" stroke-dasharray="4,2"/>
-              <ellipse cx="260" cy="90" rx="50" ry="35" fill="rgba(234,179,8,0.18)" stroke="rgba(234,179,8,.35)" stroke-width="1" stroke-dasharray="3,2"/>
-              <ellipse cx="90" cy="60" rx="35" ry="30" fill="rgba(34,197,94,0.12)" stroke="rgba(34,197,94,.25)" stroke-width="1"/>
-              <!-- safe route -->
-              <path d="M 160 190 Q 170 160 200 140 Q 230 120 240 90 Q 250 60 290 50" fill="none" stroke="#22c55e" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M 160 190 Q 170 160 200 140 Q 230 120 240 90 Q 250 60 290 50" fill="none" stroke="rgba(34,197,94,.25)" stroke-width="9" stroke-linecap="round"/>
-              <!-- direction arrows on route -->
-              <circle cx="200" cy="140" r="4" fill="#22c55e"/>
-              <circle cx="240" cy="90" r="4" fill="#22c55e"/>
-              <!-- user location -->
-              <circle cx="160" cy="190" r="14" fill="rgba(59,130,246,.2)" stroke="rgba(59,130,246,.5)" stroke-width="1.5">
-                <animate attributeName="r" values="12;18;12" dur="2s" repeatCount="indefinite"/>
-                <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite"/>
+            <svg class="map-svg" viewBox="0 0 340 260" xmlns="http://www.w3.org/2000/svg">
+              <line x1="0" y1="130" x2="340" y2="130" stroke="#1e3a5f" stroke-width="8"/>
+              <line x1="170" y1="0" x2="170" y2="260" stroke="#1e3a5f" stroke-width="8"/>
+              <line x1="0" y1="55" x2="340" y2="185" stroke="#162d4d" stroke-width="4"/>
+              <line x1="0" y1="195" x2="340" y2="75" stroke="#162d4d" stroke-width="4"/>
+              <line x1="80" y1="0" x2="80" y2="260" stroke="#12243d" stroke-width="3"/>
+              <line x1="260" y1="0" x2="260" y2="260" stroke="#12243d" stroke-width="3"/>
+              <ellipse cx="75" cy="170" rx="68" ry="52" fill="rgba(239,68,68,0.28)" stroke="rgba(239,68,68,.5)" stroke-width="1.5" stroke-dasharray="4,2"/>
+              <ellipse cx="195" cy="185" rx="52" ry="38" fill="rgba(249,115,22,0.22)" stroke="rgba(249,115,22,.4)" stroke-width="1.5" stroke-dasharray="4,2"/>
+              <ellipse cx="258" cy="88" rx="48" ry="34" fill="rgba(234,179,8,0.18)" stroke="rgba(234,179,8,.35)" stroke-width="1" stroke-dasharray="3,2"/>
+              <ellipse cx="88" cy="55" rx="33" ry="28" fill="rgba(34,197,94,0.12)" stroke="rgba(34,197,94,.25)" stroke-width="1"/>
+              <path d="M 155 185 Q 165 155 195 135 Q 228 115 238 88 Q 248 58 288 46" fill="none" stroke="#22c55e" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M 155 185 Q 165 155 195 135 Q 228 115 238 88 Q 248 58 288 46" fill="none" stroke="rgba(34,197,94,.2)" stroke-width="9" stroke-linecap="round"/>
+              <circle cx="195" cy="135" r="3.5" fill="#22c55e"/>
+              <circle cx="238" cy="88" r="3.5" fill="#22c55e"/>
+              <circle cx="155" cy="185" r="13" fill="rgba(59,130,246,.2)" stroke="rgba(59,130,246,.5)" stroke-width="1.5">
+                <animate attributeName="r" values="11;17;11" dur="2s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
               </circle>
-              <circle cx="160" cy="190" r="6" fill="#3b82f6" stroke="#fff" stroke-width="2"/>
-              <!-- shelter marker -->
-              <rect x="278" y="35" width="22" height="22" rx="5" fill="#22c55e" opacity=".9"/>
-              <text x="289" y="49" text-anchor="middle" font-size="12" fill="white">+</text>
-              <!-- risk labels -->
-              <text x="78" y="172" text-anchor="middle" font-size="9" fill="rgba(239,68,68,.9)" font-weight="700">CRÍTICO</text>
-              <text x="200" y="183" text-anchor="middle" font-size="9" fill="rgba(249,115,22,.9)" font-weight="700">ALTO</text>
-              <text x="260" y="82" text-anchor="middle" font-size="9" fill="rgba(234,179,8,.9)" font-weight="700">MÉDIO</text>
-              <text x="90" y="54" text-anchor="middle" font-size="9" fill="rgba(34,197,94,.9)" font-weight="700">BAIXO</text>
-              <!-- flood flow arrows -->
-              <path d="M 30 130 L 70 145" stroke="rgba(239,68,68,.5)" stroke-width="1.5" marker-end="url(#arr)"/>
-              <path d="M 50 150 L 90 165" stroke="rgba(239,68,68,.5)" stroke-width="1.5" marker-end="url(#arr)"/>
+              <circle cx="155" cy="185" r="5.5" fill="#3b82f6" stroke="#fff" stroke-width="2"/>
+              <rect x="276" y="33" width="22" height="22" rx="5" fill="#22c55e" opacity=".9"/>
+              <text x="287" y="47" text-anchor="middle" font-size="13" fill="white" font-weight="700">+</text>
+              <text x="73" y="163" text-anchor="middle" font-size="8" fill="rgba(239,68,68,.9)" font-weight="700">CRÍTICO</text>
+              <text x="195" y="178" text-anchor="middle" font-size="8" fill="rgba(249,115,22,.9)" font-weight="700">ALTO</text>
+              <text x="258" y="81" text-anchor="middle" font-size="8" fill="rgba(234,179,8,.9)" font-weight="700">MÉDIO</text>
+              <text x="88" y="49" text-anchor="middle" font-size="8" fill="rgba(34,197,94,.9)" font-weight="700">BAIXO</text>
+              <path d="M 28 122 L 62 136" stroke="rgba(239,68,68,.5)" stroke-width="1.5" marker-end="url(#arr)"/>
+              <path d="M 45 148 L 82 162" stroke="rgba(239,68,68,.5)" stroke-width="1.5" marker-end="url(#arr)"/>
               <defs><marker id="arr" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="4" markerHeight="4" orient="auto"><path d="M0 0L6 3L0 6Z" fill="rgba(239,68,68,.7)"/></marker></defs>
             </svg>
           </div>
           <div class="map-bottom-panel">
-            <div class="risk-card">
-              <div class="risk-card-label">⚠ Status de risco atual</div>
-              <div class="risk-card-val">CRÍTICO — ROMPIMENTO IMINENTE</div>
-              <div class="risk-card-sub">Barragem do Ribeirão · 2.3 km · Alerta emitido 14:32</div>
+            <div class="countdown-bar">
+              <div>
+                <div class="countdown-num" id="countdown-display">34:22</div>
+              </div>
+              <div class="countdown-label">
+                <strong>⚠ Tempo até zona crítica</strong>
+                Barragem do Ribeirão · 2.3 km
+              </div>
             </div>
-            <div style="display:flex;gap:8px;margin-bottom:8px;font-size:.7rem;color:var(--text2)">
+            <div style="display:flex;gap:6px;margin-bottom:8px;font-size:.65rem;color:var(--text2)">
               <span>📍 Abrigo: 1.8km</span>
-              <span>🕐 ~22 min a pé</span>
+              <span>🕐 ~22 min</span>
               <span>📶 Offline ativo</span>
             </div>
             <button class="evac-btn" onclick="switchScreen('route')">🚨 EVACUAR AGORA</button>
           </div>
           <div class="app-nav-bar">
-            <button class="app-nav-item active" onclick="switchScreen('map')">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/></svg>
-              Mapa
-            </button>
-            <button class="app-nav-item" onclick="switchScreen('alert')">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-              Alertas
-            </button>
-            <button class="app-nav-item" onclick="switchScreen('route')">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-              Rota
-            </button>
-            <button class="app-nav-item" onclick="switchScreen('shelters')">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
-              Abrigos
-            </button>
-            <button class="app-nav-item" onclick="switchScreen('tech')">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93L17.66 6.34A8 8 0 1117.66 17.66l1.41 1.41"/></svg>
-              Técnico
-            </button>
+            <button class="app-nav-item active" onclick="switchScreen('map')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/></svg>Mapa</button>
+            <button class="app-nav-item" onclick="switchScreen('alert')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Alertas</button>
+            <button class="app-nav-item" onclick="switchScreen('route')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Rota</button>
+            <button class="app-nav-item" onclick="switchScreen('shelters')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>Abrigos</button>
+            <button class="app-nav-item" onclick="switchScreen('tech')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93L17.66 6.34A8 8 0 1117.66 17.66l1.41 1.41"/></svg>GIS</button>
           </div>
         </div>
 
@@ -469,34 +493,31 @@ h3.sub-title{font-size:1rem;font-weight:700;margin-bottom:1rem;color:var(--text)
             <div class="map-top-bar-title" style="color:var(--red)">⚠ ALERTA DE EMERGÊNCIA</div>
             <span class="chip red">CRÍTICO</span>
           </div>
-          <div class="screen-alert" style="flex:1;overflow-y:auto">
+          <div class="screen-alert">
             <div class="alert-header">
               <div class="alert-icon">🚨</div>
-              <div>
-                <div class="alert-level">NÍVEL CRÍTICO</div>
-                <div class="alert-time">Emitido: 14:32 — há 8 minutos</div>
-              </div>
+              <div><div class="alert-level">NÍVEL CRÍTICO</div><div class="alert-time">Emitido: 14:32 — há 8 minutos</div></div>
             </div>
             <div class="alert-msg">
               <div class="alert-msg-title">⚠ EVACUAÇÃO IMEDIATA REQUERIDA</div>
-              <div class="alert-msg-text">Risco iminente de rompimento da Barragem do Ribeirão detectado. Zona de inundação projetada alcança sua localização em aproximadamente 35 minutos.</div>
+              <div class="alert-msg-text">Risco iminente de rompimento da Barragem do Ribeirão detectado. Zona de inundação projetada alcança sua localização em aproximadamente 34 minutos.</div>
             </div>
-            <div class="alert-steps">
-              <div style="font-size:.75rem;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Instruções de evacuação</div>
-              <div class="alert-step"><div class="step-num">1</div><div class="step-text">Saia imediatamente do local. Não aguarde aviso adicional.</div></div>
-              <div class="alert-step"><div class="step-num">2</div><div class="step-text">Siga a rota verde no mapa. Não use áreas marcadas em vermelho.</div></div>
+            <div style="margin-bottom:12px">
+              <div style="font-size:.72rem;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Instruções</div>
+              <div class="alert-step"><div class="step-num">1</div><div class="step-text">Saia imediatamente. Não aguarde aviso adicional.</div></div>
+              <div class="alert-step"><div class="step-num">2</div><div class="step-text">Siga a rota verde no mapa. Evite áreas em vermelho.</div></div>
               <div class="alert-step"><div class="step-num">3</div><div class="step-text">Dirija-se ao Abrigo Central (1,8 km) ou EE João Silva (2,4 km).</div></div>
-              <div class="alert-step"><div class="step-num">4</div><div class="step-text">Ajude idosos e pessoas com mobilidade reduzida nas proximidades.</div></div>
+              <div class="alert-step"><div class="step-num">4</div><div class="step-text">Ajude idosos e pessoas com mobilidade reduzida.</div></div>
               <div class="alert-step"><div class="step-num">5</div><div class="step-text">Em caso de corte de rota, o app recalcula automaticamente.</div></div>
             </div>
             <button class="evac-btn" onclick="switchScreen('route')">🗺 Iniciar Navegação Segura</button>
           </div>
           <div class="app-nav-bar">
             <button class="app-nav-item" onclick="switchScreen('map')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/></svg>Mapa</button>
-            <button class="app-nav-item active" onclick="switchScreen('alert')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Alertas</button>
+            <button class="app-nav-item active" onclick="switchScreen('alert')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>Alertas</button>
             <button class="app-nav-item" onclick="switchScreen('route')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Rota</button>
             <button class="app-nav-item" onclick="switchScreen('shelters')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>Abrigos</button>
-            <button class="app-nav-item" onclick="switchScreen('tech')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg>Técnico</button>
+            <button class="app-nav-item" onclick="switchScreen('tech')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg>GIS</button>
           </div>
         </div>
 
@@ -506,95 +527,77 @@ h3.sub-title{font-size:1rem;font-weight:700;margin-bottom:1rem;color:var(--text)
             <div class="route-header-label">🧭 Rota de fuga ativa</div>
             <div class="route-header-title">Rua das Acácias → Abrigo Central</div>
           </div>
+          <div class="route-progress">
+            <div class="route-progress-label"><span>Progresso da rota</span><span style="color:var(--green);font-weight:600">35% concluído</span></div>
+            <div class="route-progress-bar"><div class="route-progress-fill" id="route-fill"></div></div>
+          </div>
           <div class="route-map">
-            <svg width="100%" viewBox="0 0 340 240" xmlns="http://www.w3.org/2000/svg">
-              <rect width="340" height="240" fill="#0d1829"/>
-              <line x1="0" y1="120" x2="340" y2="120" stroke="#1e3a5f" stroke-width="6"/>
-              <line x1="120" y1="0" x2="120" y2="240" stroke="#1e3a5f" stroke-width="6"/>
-              <line x1="240" y1="0" x2="240" y2="240" stroke="#1e3a5f" stroke-width="4"/>
-              <ellipse cx="70" cy="155" rx="65" ry="50" fill="rgba(239,68,68,.2)" stroke="rgba(239,68,68,.4)" stroke-width="1" stroke-dasharray="3,2"/>
-              <path d="M 150 180 L 150 120 L 240 120 L 240 60 L 290 60" fill="none" stroke="#22c55e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M 150 180 L 150 120 L 240 120 L 240 60 L 290 60" fill="none" stroke="rgba(34,197,94,.2)" stroke-width="10" stroke-linecap="round"/>
-              <circle cx="150" cy="180" r="7" fill="#3b82f6" stroke="#fff" stroke-width="2"/>
-              <circle cx="150" cy="120" r="5" fill="#22c55e"/>
-              <circle cx="240" cy="120" r="5" fill="#22c55e"/>
-              <circle cx="240" cy="60" r="5" fill="#22c55e"/>
-              <rect x="278" y="42" width="28" height="28" rx="6" fill="#22c55e"/>
-              <text x="292" y="59" text-anchor="middle" font-size="14" fill="white" font-weight="700">+</text>
-              <text x="75" y="148" text-anchor="middle" font-size="8" fill="rgba(239,68,68,.8)" font-weight="700">INUNDADO</text>
-              <text x="292" y="38" text-anchor="middle" font-size="8" fill="#22c55e">ABRIGO</text>
-              <text x="150" y="196" text-anchor="middle" font-size="8" fill="rgba(59,130,246,.9)">VOCÊ</text>
+            <svg width="100%" viewBox="0 0 340 220" xmlns="http://www.w3.org/2000/svg">
+              <rect width="340" height="220" fill="#0d1829"/>
+              <line x1="0" y1="110" x2="340" y2="110" stroke="#1e3a5f" stroke-width="6"/>
+              <line x1="120" y1="0" x2="120" y2="220" stroke="#1e3a5f" stroke-width="6"/>
+              <line x1="240" y1="0" x2="240" y2="220" stroke="#1e3a5f" stroke-width="4"/>
+              <ellipse cx="65" cy="148" rx="62" ry="48" fill="rgba(239,68,68,.2)" stroke="rgba(239,68,68,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+              <path d="M 148 172 L 148 110 L 240 110 L 240 54 L 288 54" fill="none" stroke="rgba(34,197,94,.15)" stroke-width="10" stroke-linecap="round"/>
+              <path d="M 148 172 L 148 110 L 240 110 L 240 54 L 288 54" fill="none" stroke="#22c55e" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- completed portion -->
+              <path d="M 148 172 L 148 140" fill="none" stroke="#3b82f6" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="148" cy="172" r="6" fill="#3b82f6" stroke="#fff" stroke-width="2"/>
+              <circle cx="148" cy="110" r="4" fill="#22c55e"/>
+              <circle cx="240" cy="110" r="4" fill="#22c55e"/>
+              <circle cx="240" cy="54" r="4" fill="#22c55e"/>
+              <rect x="276" y="38" width="26" height="26" rx="6" fill="#22c55e"/>
+              <text x="289" y="54" text-anchor="middle" font-size="13" fill="white" font-weight="700">+</text>
+              <text x="65" y="140" text-anchor="middle" font-size="7" fill="rgba(239,68,68,.8)" font-weight="700">INUNDADO</text>
+              <text x="289" y="32" text-anchor="middle" font-size="7" fill="#22c55e">ABRIGO</text>
+              <text x="148" y="188" text-anchor="middle" font-size="7" fill="rgba(59,130,246,.9)">VOCÊ</text>
             </svg>
           </div>
           <div class="route-info">
             <div class="route-stat-row">
-              <div class="route-stat"><div class="route-stat-val">1.8 km</div><div class="route-stat-label">Distância</div></div>
-              <div class="route-stat"><div class="route-stat-val">22 min</div><div class="route-stat-label">A pé</div></div>
-              <div class="route-stat"><div class="route-stat-val">+34m</div><div class="route-stat-label">Altitude ganho</div></div>
+              <div class="route-stat"><div class="route-stat-val">1.8km</div><div class="route-stat-label">Distância</div></div>
+              <div class="route-stat"><div class="route-stat-val">22min</div><div class="route-stat-label">A pé</div></div>
+              <div class="route-stat"><div class="route-stat-val">+34m</div><div class="route-stat-label">Altitude</div></div>
             </div>
-            <div class="route-waypoints">
+            <div style="margin-bottom:8px">
               <div class="waypoint"><div class="wp-dot" style="background:var(--blue)"></div><div><div class="wp-label">Rua das Acácias, 142</div><div class="wp-sub">Ponto de partida — agora</div></div></div>
               <div class="waypoint"><div class="wp-dot" style="background:var(--green)"></div><div><div class="wp-label">Av. Principal ↑ Norte</div><div class="wp-sub">Vire à direita — 400m</div></div></div>
-              <div class="waypoint"><div class="wp-dot" style="background:var(--green)"></div><div><div class="wp-label">Rua da Colina</div><div class="wp-sub">Continue reto — 800m</div></div></div>
               <div class="waypoint"><div class="wp-dot" style="background:var(--green)"></div><div><div class="wp-label">🏥 Abrigo Central</div><div class="wp-sub">Destino — cap. 350 pessoas</div></div></div>
             </div>
-            <div style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);border-radius:8px;padding:8px 10px;font-size:.72rem;color:var(--green)">
-              ✓ Rota segura confirmada · IA verificou ausência de zonas de risco
-            </div>
+            <div style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);border-radius:8px;padding:7px 10px;font-size:.68rem;color:var(--green)">✓ Rota segura confirmada · Sem zonas de risco no trajeto</div>
           </div>
           <div class="app-nav-bar">
             <button class="app-nav-item" onclick="switchScreen('map')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/></svg>Mapa</button>
             <button class="app-nav-item" onclick="switchScreen('alert')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>Alertas</button>
             <button class="app-nav-item active" onclick="switchScreen('route')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Rota</button>
             <button class="app-nav-item" onclick="switchScreen('shelters')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>Abrigos</button>
-            <button class="app-nav-item" onclick="switchScreen('tech')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg>Técnico</button>
+            <button class="app-nav-item" onclick="switchScreen('tech')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg>GIS</button>
           </div>
         </div>
 
         <!-- SHELTERS -->
         <div id="screen-shelters" class="app-screen" style="flex-direction:column">
-          <div class="map-top-bar">
-            <div class="map-top-bar-title">🏥 Abrigos Seguros</div>
-            <span class="chip gps">3 disponíveis</span>
-          </div>
+          <div class="map-top-bar"><div class="map-top-bar-title">🏥 Abrigos Seguros</div><span class="chip gps">3 disponíveis</span></div>
           <div style="padding:12px;flex:1;overflow-y:auto">
-            <div style="font-size:.72rem;color:var(--text2);margin-bottom:10px">Ordenados por distância · GPS ativo</div>
+            <div style="font-size:.68rem;color:var(--text2);margin-bottom:10px">Ordenados por distância · GPS ativo</div>
             <div class="shelter-card" onclick="switchScreen('route')">
-              <div class="shelter-icon green">🏥</div>
-              <div>
-                <div class="shelter-name">Abrigo Central</div>
-                <div class="shelter-dist">📍 1,8 km · ~22 min · Rota SEGURA</div>
-              </div>
-              <div class="shelter-cap">
-                <div class="shelter-cap-num">187/350</div>
-                <div class="shelter-cap-label">ocupado</div>
-              </div>
+              <div class="shelter-icon" style="background:rgba(34,197,94,.15)">🏥</div>
+              <div><div class="shelter-name">Abrigo Central</div><div class="shelter-dist">📍 1,8 km · ~22 min · Rota SEGURA</div></div>
+              <div class="shelter-cap"><div class="shelter-cap-num">187/350</div><div class="shelter-cap-label">ocupado</div></div>
             </div>
             <div class="shelter-card">
-              <div class="shelter-icon green">🏫</div>
-              <div>
-                <div class="shelter-name">EE João Silva</div>
-                <div class="shelter-dist">📍 2,4 km · ~29 min · Rota segura</div>
-              </div>
-              <div class="shelter-cap">
-                <div class="shelter-cap-num">42/200</div>
-                <div class="shelter-cap-label">ocupado</div>
-              </div>
+              <div class="shelter-icon" style="background:rgba(34,197,94,.15)">🏫</div>
+              <div><div class="shelter-name">EE João Silva</div><div class="shelter-dist">📍 2,4 km · ~29 min · Rota segura</div></div>
+              <div class="shelter-cap"><div class="shelter-cap-num">42/200</div><div class="shelter-cap-label">ocupado</div></div>
             </div>
             <div class="shelter-card" style="opacity:.6">
-              <div class="shelter-icon yellow">⚠</div>
-              <div>
-                <div class="shelter-name">Ginásio Municipal</div>
-                <div class="shelter-dist">📍 3,1 km · Rota PARCIALMENTE comprometida</div>
-              </div>
-              <div class="shelter-cap">
-                <div class="shelter-cap-num" style="color:var(--yellow)">310/400</div>
-                <div class="shelter-cap-label">ocupado</div>
-              </div>
+              <div class="shelter-icon" style="background:rgba(234,179,8,.15)">⚠</div>
+              <div><div class="shelter-name">Ginásio Municipal</div><div class="shelter-dist">📍 3,1 km · Rota PARCIALMENTE comprometida</div></div>
+              <div class="shelter-cap"><div class="shelter-cap-num" style="color:var(--yellow)">310/400</div><div class="shelter-cap-label">ocupado</div></div>
             </div>
-            <div style="background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:10px;padding:10px;margin-top:8px;font-size:.75rem;color:var(--text2)">
-              <strong style="color:var(--blue);display:block;margin-bottom:4px">📡 Dados atualizados offline</strong>
-              Capacidades e status obtidos durante última sincronização (14:28). Em áreas sem sinal, o app usa dados em cache.
+            <div style="background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:10px;padding:9px;margin-top:8px;font-size:.72rem;color:var(--text2)">
+              <strong style="color:var(--blue);display:block;margin-bottom:3px">📡 Dados offline</strong>
+              Última sincronização: 14:28. Capacidades em cache.
             </div>
           </div>
           <div class="app-nav-bar">
@@ -602,68 +605,33 @@ h3.sub-title{font-size:1rem;font-weight:700;margin-bottom:1rem;color:var(--text)
             <button class="app-nav-item" onclick="switchScreen('alert')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>Alertas</button>
             <button class="app-nav-item" onclick="switchScreen('route')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Rota</button>
             <button class="app-nav-item active" onclick="switchScreen('shelters')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>Abrigos</button>
-            <button class="app-nav-item" onclick="switchScreen('tech')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg>Técnico</button>
+            <button class="app-nav-item" onclick="switchScreen('tech')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg>GIS</button>
           </div>
         </div>
 
         <!-- TECH -->
         <div id="screen-tech" class="app-screen" style="flex-direction:column">
-          <div class="map-top-bar" style="background:#060d1a">
-            <div class="map-top-bar-title" style="color:var(--cyan)">⚙ Modo Técnico — WRG TECH</div>
-            <span class="chip" style="background:rgba(6,182,212,.12);color:var(--cyan);border:1px solid rgba(6,182,212,.25)">GIS PRO</span>
-          </div>
-          <div style="padding:12px;flex:1;overflow-y:auto">
+          <div class="map-top-bar" style="background:#060d1a"><div class="map-top-bar-title" style="color:var(--cyan)">⚙ Modo GIS Técnico</div><span class="chip cyan">WRG TECH</span></div>
+          <div style="padding:10px;flex:1;overflow-y:auto">
             <div class="tech-layer">
-              <div class="tech-layer-header">
-                <div class="tech-layer-name" style="color:var(--red)">▲ Camada: Zonas de Risco</div>
-                <span style="font-size:.65rem;color:var(--green)">● Ativo</span>
-              </div>
+              <div class="tech-layer-header"><div class="tech-layer-name" style="color:var(--red)">▲ Zonas de Risco</div><span style="font-size:.62rem;color:var(--green)">● Ativo</span></div>
               <div class="tech-progress"><div class="tech-progress-fill" style="width:92%;background:var(--red)"></div></div>
-              <div class="tech-data-row">
-                <div class="tech-datum">Polígonos: <span>347</span></div>
-                <div class="tech-datum">Precisão: <span>±2m</span></div>
-                <div class="tech-datum">Fonte: <span>PostGIS</span></div>
-                <div class="tech-datum">SRID: <span>EPSG:4674</span></div>
-              </div>
+              <div class="tech-data-row"><div class="tech-datum">Polígonos: <span>347</span></div><div class="tech-datum">Precisão: <span>±2m</span></div><div class="tech-datum">Fonte: <span>PostGIS</span></div><div class="tech-datum">SRID: <span>4674</span></div></div>
             </div>
             <div class="tech-layer">
-              <div class="tech-layer-header">
-                <div class="tech-layer-name" style="color:var(--green)">▲ Camada: Rotas de Fuga</div>
-                <span style="font-size:.65rem;color:var(--green)">● Ativo</span>
-              </div>
+              <div class="tech-layer-header"><div class="tech-layer-name" style="color:var(--green)">▲ Rotas de Fuga</div><span style="font-size:.62rem;color:var(--green)">● Ativo</span></div>
               <div class="tech-progress"><div class="tech-progress-fill" style="width:78%;background:var(--green)"></div></div>
-              <div class="tech-data-row">
-                <div class="tech-datum">Segmentos: <span>1.204</span></div>
-                <div class="tech-datum">Algoritmo: <span>pgRouting</span></div>
-                <div class="tech-datum">Atualizado: <span>14:28</span></div>
-                <div class="tech-datum">Offline: <span>✓ Cacheado</span></div>
-              </div>
+              <div class="tech-data-row"><div class="tech-datum">Segmentos: <span>1.204</span></div><div class="tech-datum">Algoritmo: <span>pgRouting</span></div><div class="tech-datum">Cache: <span>✓</span></div><div class="tech-datum">Atualizado: <span>14:28</span></div></div>
             </div>
             <div class="tech-layer">
-              <div class="tech-layer-header">
-                <div class="tech-layer-name" style="color:var(--cyan)">▲ Camada: MDT / Terreno</div>
-                <span style="font-size:.65rem;color:var(--cyan)">● Ativo</span>
-              </div>
+              <div class="tech-layer-header"><div class="tech-layer-name" style="color:var(--cyan)">▲ MDT / Terreno</div><span style="font-size:.62rem;color:var(--cyan)">● Ativo</span></div>
               <div class="tech-progress"><div class="tech-progress-fill" style="width:100%;background:var(--cyan)"></div></div>
-              <div class="tech-data-row">
-                <div class="tech-datum">Res.: <span>10m × 10m</span></div>
-                <div class="tech-datum">Formato: <span>GeoTIFF</span></div>
-                <div class="tech-datum">Fonte: <span>GDAL</span></div>
-                <div class="tech-datum">Curvas: <span>1m</span></div>
-              </div>
+              <div class="tech-data-row"><div class="tech-datum">Resolução: <span>10m×10m</span></div><div class="tech-datum">Formato: <span>GeoTIFF</span></div><div class="tech-datum">Fonte: <span>GDAL</span></div><div class="tech-datum">Curvas: <span>1m</span></div></div>
             </div>
             <div class="tech-layer" style="border-color:rgba(234,179,8,.3)">
-              <div class="tech-layer-header">
-                <div class="tech-layer-name" style="color:var(--yellow)">▲ GeoIA — Análise de Risco</div>
-                <span style="font-size:.65rem;color:var(--yellow)">● Processando</span>
-              </div>
+              <div class="tech-layer-header"><div class="tech-layer-name" style="color:var(--yellow)">▲ GeoIA — Análise</div><span style="font-size:.62rem;color:var(--yellow)">● Processando</span></div>
               <div class="tech-progress"><div class="tech-progress-fill" style="width:63%;background:var(--yellow)"></div></div>
-              <div class="tech-data-row">
-                <div class="tech-datum">Modelo: <span>Random Forest</span></div>
-                <div class="tech-datum">Acurácia: <span>94.2%</span></div>
-                <div class="tech-datum">Inferência: <span>~80ms</span></div>
-                <div class="tech-datum">Versão: <span>v1.3.1</span></div>
-              </div>
+              <div class="tech-data-row"><div class="tech-datum">Modelo: <span>Random Forest</span></div><div class="tech-datum">Acurácia: <span>94.2%</span></div><div class="tech-datum">Inferência: <span>~80ms</span></div><div class="tech-datum">Versão: <span>v1.3.1</span></div></div>
             </div>
           </div>
           <div class="app-nav-bar">
@@ -671,190 +639,320 @@ h3.sub-title{font-size:1rem;font-weight:700;margin-bottom:1rem;color:var(--text)
             <button class="app-nav-item" onclick="switchScreen('alert')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>Alertas</button>
             <button class="app-nav-item" onclick="switchScreen('route')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Rota</button>
             <button class="app-nav-item" onclick="switchScreen('shelters')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>Abrigos</button>
-            <button class="app-nav-item active" onclick="switchScreen('tech')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg>Técnico</button>
+            <button class="app-nav-item active" onclick="switchScreen('tech')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg>GIS</button>
           </div>
         </div>
-
       </div>
     </div>
 
     <!-- SIDE PANEL -->
     <div class="app-side-panel">
-      <div style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text2);margin-bottom:.8rem">Navegar telas</div>
+      <div style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text2);margin-bottom:.8rem">Navegar telas</div>
       <div class="screen-nav-buttons">
-        <button class="screen-nav-btn active" id="btn-splash" onclick="switchScreen('splash')">📱 Tela de Abertura</button>
-        <button class="screen-nav-btn" id="btn-map" onclick="switchScreen('map')">🗺 Mapa Principal</button>
+        <button class="screen-nav-btn active" id="btn-splash" onclick="switchScreen('splash')">📱 Abertura</button>
+        <button class="screen-nav-btn" id="btn-map" onclick="switchScreen('map')">🗺 Mapa + Contador</button>
         <button class="screen-nav-btn" id="btn-alert" onclick="switchScreen('alert')">🚨 Alerta de Emergência</button>
-        <button class="screen-nav-btn" id="btn-route" onclick="switchScreen('route')">🧭 Rota de Fuga</button>
+        <button class="screen-nav-btn" id="btn-route" onclick="switchScreen('route')">🧭 Rota + Progresso</button>
         <button class="screen-nav-btn" id="btn-shelters" onclick="switchScreen('shelters')">🏥 Abrigos Seguros</button>
-        <button class="screen-nav-btn" id="btn-tech" onclick="switchScreen('tech')">⚙ Modo Técnico</button>
+        <button class="screen-nav-btn" id="btn-tech" onclick="switchScreen('tech')">⚙ Modo GIS Técnico</button>
       </div>
       <div class="screen-desc" id="screen-desc-box">
         <strong>Tela de Abertura</strong>
-        Splash screen do SEGI com opções de entrada no sistema ou simulação de alerta de emergência.
+        Splash screen com entrada no sistema ou simulação de alerta de emergência.
       </div>
     </div>
   </div>
 </div>
 
-<!-- ══ FEATURES ══ -->
-<div id="tab-features" class="section">
+<!-- ══ DASHBOARD DEFESA CIVIL ══ -->
+<div id="tab-dashboard" class="section">
   <div class="section-header">
-    <div class="section-tag">Produto</div>
-    <div class="section-title">Funcionalidades</div>
-    <div class="section-desc">Conjunto completo de ferramentas para resposta a emergências — do alerta à chegada ao abrigo seguro.</div>
+    <div class="section-tag">Painel Operacional</div>
+    <div class="section-title">Central da Defesa Civil</div>
+    <div class="section-desc">Visão gerencial em tempo real — usuários evacuados, abrigos, alertas ativos e status das rotas.</div>
   </div>
-  <h3 class="sub-title">Funcionalidades Principais</h3>
-  <div class="features-grid">
-    <div class="feat-card">
-      <div class="feat-icon blue">📍</div>
-      <div class="feat-name">Localização em Tempo Real</div>
-      <div class="feat-desc">Identifica posição do usuário via GPS e exibe no mapa mesmo sem conexão. Precisão de ±3 metros com A-GPS e dados de célula de emergência.</div>
-      <div class="feat-tags"><span class="feat-tag">GPS</span><span class="feat-tag">Offline</span><span class="feat-tag">Flutter</span></div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon orange">🌊</div>
-      <div class="feat-name">Visualização de Risco</div>
-      <div class="feat-desc">Exibe zonas de inundação e fluxo de lama com classificação por cores: verde (baixo), amarelo (médio), laranja (alto) e vermelho (crítico).</div>
-      <div class="feat-tags"><span class="feat-tag">GIS</span><span class="feat-tag">PostGIS</span><span class="feat-tag">Camadas</span></div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon red">🔔</div>
-      <div class="feat-name">Alertas de Emergência</div>
-      <div class="feat-desc">Notifica sobre risco iminente com instruções claras. Fallback via SMS quando internet está indisponível. Tempo de alerta abaixo de 30 segundos.</div>
-      <div class="feat-tags"><span class="feat-tag">Push</span><span class="feat-tag">SMS Fallback</span><span class="feat-tag">FCM</span></div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon green">🧭</div>
-      <div class="feat-name">Rotas de Fuga Inteligentes</div>
-      <div class="feat-desc">Calcula automaticamente o caminho mais seguro. Evita zonas de risco. Prioriza altitude e capacidade viária. Recalcula em tempo real se a situação mudar.</div>
-      <div class="feat-tags"><span class="feat-tag">pgRouting</span><span class="feat-tag">GeoIA</span><span class="feat-tag">MDT</span></div>
-    </div>
+  <div class="dash-grid">
+    <div class="dash-card"><div class="dash-num" style="color:var(--red)">3</div><div class="dash-label">Alertas Ativos Agora</div></div>
+    <div class="dash-card"><div class="dash-num" style="color:var(--orange)">1.247</div><div class="dash-label">Usuários em Evacuação</div></div>
+    <div class="dash-card"><div class="dash-num" style="color:var(--green)">892</div><div class="dash-label">Chegaram a Abrigos</div></div>
+    <div class="dash-card"><div class="dash-num" style="color:var(--blue)">8/11</div><div class="dash-label">Abrigos Disponíveis</div></div>
+    <div class="dash-card"><div class="dash-num" style="color:var(--cyan)">34s</div><div class="dash-label">Tempo Médio de Alerta</div></div>
+    <div class="dash-card"><div class="dash-num" style="color:var(--yellow)">2</div><div class="dash-label">Rotas Recalculadas</div></div>
   </div>
-  <div class="divider"></div>
-  <h3 class="sub-title">Funcionalidades Essenciais</h3>
-  <div class="features-grid">
-    <div class="feat-card">
-      <div class="feat-icon cyan">🏥</div>
-      <div class="feat-name">Abrigos Seguros</div>
-      <div class="feat-desc">Mostra pontos de abrigo mais próximos com capacidade atual, distância estimada e status de rota de acesso. Dados georreferenciados com ponto (POINT).</div>
-      <div class="feat-tags"><span class="feat-tag">Geolocalização</span><span class="feat-tag">Capacidade</span></div>
+  <div class="dash-map">
+    <div class="dash-map-header">
+      <div class="dash-map-title">🗺 Mapa de Operações — Região Monitorada</div>
+      <div style="display:flex;gap:8px">
+        <span class="chip red">3 alertas</span>
+        <span class="chip gps">Ao vivo</span>
+      </div>
     </div>
-    <div class="feat-card">
-      <div class="feat-icon yellow">🔄</div>
-      <div class="feat-name">Recálculo Dinâmico</div>
-      <div class="feat-desc">Atualiza rotas automaticamente quando uma rua é bloqueada, zona de risco avança ou abrigo atinge capacidade máxima. Reação em menos de 5 segundos.</div>
-      <div class="feat-tags"><span class="feat-tag">IA</span><span class="feat-tag">Tempo real</span></div>
+    <svg width="100%" viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg">
+      <rect width="800" height="320" fill="#0a1422"/>
+      <!-- grid roads -->
+      <line x1="0" y1="160" x2="800" y2="160" stroke="#1a3050" stroke-width="10"/>
+      <line x1="200" y1="0" x2="200" y2="320" stroke="#1a3050" stroke-width="8"/>
+      <line x1="400" y1="0" x2="400" y2="320" stroke="#1a3050" stroke-width="8"/>
+      <line x1="600" y1="0" x2="600" y2="320" stroke="#1a3050" stroke-width="8"/>
+      <line x1="0" y1="80" x2="800" y2="80" stroke="#122540" stroke-width="4"/>
+      <line x1="0" y1="240" x2="800" y2="240" stroke="#122540" stroke-width="4"/>
+      <line x1="100" y1="0" x2="100" y2="320" stroke="#122540" stroke-width="3"/>
+      <line x1="300" y1="0" x2="300" y2="320" stroke="#122540" stroke-width="3"/>
+      <line x1="500" y1="0" x2="500" y2="320" stroke="#122540" stroke-width="3"/>
+      <line x1="700" y1="0" x2="700" y2="320" stroke="#122540" stroke-width="3"/>
+      <!-- risk zones -->
+      <ellipse cx="130" cy="220" rx="110" ry="80" fill="rgba(239,68,68,.2)" stroke="rgba(239,68,68,.4)" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <ellipse cx="350" cy="240" rx="90" ry="65" fill="rgba(249,115,22,.18)" stroke="rgba(249,115,22,.35)" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <ellipse cx="560" cy="200" rx="80" ry="55" fill="rgba(234,179,8,.14)" stroke="rgba(234,179,8,.3)" stroke-width="1" stroke-dasharray="3,2"/>
+      <ellipse cx="680" cy="80" rx="60" ry="45" fill="rgba(34,197,94,.1)" stroke="rgba(34,197,94,.2)" stroke-width="1"/>
+      <!-- evacuation routes -->
+      <path d="M 180 230 Q 240 180 310 160 Q 380 140 430 100 Q 480 60 540 50 Q 600 40 650 60" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+      <path d="M 320 255 Q 370 210 420 190 Q 470 170 520 150 Q 570 130 620 120 Q 660 110 680 90" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" opacity=".6"/>
+      <path d="M 90 200 Q 140 160 190 140 Q 260 110 310 90 Q 380 65 440 55" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-dasharray="6,3" opacity=".6"/>
+      <!-- user dots (evacuating) -->
+      <circle cx="200" cy="215" r="5" fill="#f97316"><animate attributeName="opacity" values="1;0.3;1" dur="1.8s" repeatCount="indefinite"/></circle>
+      <circle cx="340" cy="248" r="5" fill="#f97316"><animate attributeName="opacity" values="1;0.3;1" dur="2.1s" repeatCount="indefinite"/></circle>
+      <circle cx="150" cy="195" r="4" fill="#3b82f6"><animate attributeName="opacity" values="1;0.3;1" dur="1.6s" repeatCount="indefinite"/></circle>
+      <circle cx="420" cy="195" r="4" fill="#3b82f6"><animate attributeName="opacity" values="1;0.3;1" dur="2.4s" repeatCount="indefinite"/></circle>
+      <!-- shelters -->
+      <rect x="630" y="43" width="28" height="28" rx="6" fill="#22c55e" opacity=".9"/>
+      <text x="644" y="60" text-anchor="middle" font-size="14" fill="white" font-weight="700">+</text>
+      <rect x="425" y="37" width="26" height="26" rx="6" fill="#22c55e" opacity=".85"/>
+      <text x="438" y="53" text-anchor="middle" font-size="13" fill="white" font-weight="700">+</text>
+      <!-- labels -->
+      <text x="130" y="212" text-anchor="middle" font-size="10" fill="rgba(239,68,68,.9)" font-weight="700">CRÍTICO</text>
+      <text x="350" y="232" text-anchor="middle" font-size="9" fill="rgba(249,115,22,.9)" font-weight="700">ALTO</text>
+      <text x="560" y="194" text-anchor="middle" font-size="9" fill="rgba(234,179,8,.9)" font-weight="700">MÉDIO</text>
+      <text x="680" y="74" text-anchor="middle" font-size="9" fill="rgba(34,197,94,.9)" font-weight="700">BAIXO</text>
+      <text x="644" y="86" text-anchor="middle" font-size="8" fill="#22c55e">ABRIGO A</text>
+      <text x="438" y="78" text-anchor="middle" font-size="8" fill="#22c55e">ABRIGO B</text>
+    </svg>
+  </div>
+  <h3 class="sub-title">Alertas Ativos</h3>
+  <div class="dash-alerts">
+    <div class="dash-alert-item" style="border-color:rgba(239,68,68,.25);background:rgba(239,68,68,.04)">
+      <div class="dash-alert-dot" style="background:var(--red)"></div>
+      <div><div class="dash-alert-title">Barragem do Ribeirão — CRÍTICO</div><div class="dash-alert-sub">1.247 usuários alertados · 892 evacuados · 355 em trânsito</div></div>
+      <div class="dash-alert-time">14:32</div>
     </div>
-    <div class="feat-card">
-      <div class="feat-icon green">📡</div>
-      <div class="feat-name">Funcionamento Offline</div>
-      <div class="feat-desc">Mapas vetoriais e de risco armazenados no dispositivo. Rotas pré-calculadas. Sistema funcional 100% sem internet — essencial em zonas de desastre.</div>
-      <div class="feat-tags"><span class="feat-tag">Cache local</span><span class="feat-tag">Tiles</span><span class="feat-tag">SQLite</span></div>
+    <div class="dash-alert-item" style="border-color:rgba(249,115,22,.25);background:rgba(249,115,22,.04)">
+      <div class="dash-alert-dot" style="background:var(--orange)"></div>
+      <div><div class="dash-alert-title">Rio Paraíba — Enchente ALTO</div><div class="dash-alert-sub">438 usuários alertados · 310 evacuados · 2 rotas recalculadas</div></div>
+      <div class="dash-alert-time">13:58</div>
     </div>
-    <div class="feat-card">
-      <div class="feat-icon blue">📶</div>
-      <div class="feat-name">Comunicação Emergencial</div>
-      <div class="feat-desc">Recebe alertas via push notification. Em falha de internet, utiliza SMS como alternativa. Integração com sistemas Defesa Civil e CEMADEN.</div>
-      <div class="feat-tags"><span class="feat-tag">Push</span><span class="feat-tag">SMS</span><span class="feat-tag">Webhook</span></div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon purple">⚙</div>
-      <div class="feat-name">Modo Técnico</div>
-      <div class="feat-desc">Visualização de camadas GIS completas, dados geoespaciais brutos e métricas do sistema. Exclusivo para operadores e profissionais da WRG TECH.</div>
-      <div class="feat-tags"><span class="feat-tag">GIS</span><span class="feat-tag">WRG TECH</span><span class="feat-tag">Camadas</span></div>
+    <div class="dash-alert-item" style="border-color:rgba(234,179,8,.25);background:rgba(234,179,8,.04)">
+      <div class="dash-alert-dot" style="background:var(--yellow)"></div>
+      <div><div class="dash-alert-title">Encosta Bairro Alto — Deslizamento MÉDIO</div><div class="dash-alert-sub">182 usuários monitorados · Risco em observação</div></div>
+      <div class="dash-alert-time">13:20</div>
     </div>
   </div>
 </div>
 
-<!-- ══ FLOW ══ -->
-<div id="tab-flow" class="section">
+<!-- ══ CASOS REAIS ══ -->
+<div id="tab-casos" class="section">
   <div class="section-header">
-    <div class="section-tag">Jornada do Usuário</div>
-    <div class="section-title">Fluxo de Uso</div>
-    <div class="section-desc">Da abertura do app à chegada segura ao abrigo — 5 etapas simples, mesmo em situação de emergência.</div>
+    <div class="section-tag">Contexto e Relevância</div>
+    <div class="section-title">Casos Reais no Brasil</div>
+    <div class="section-desc">O SEGI foi concebido a partir das lições dos maiores desastres com barragens e inundações do Brasil. Veja como o sistema poderia ter mudado o desfecho.</div>
   </div>
-  <div class="flow-row">
-    <div class="flow-step">
-      <div class="flow-circle fc1"><div class="flow-num fnum1">1</div>📱</div>
-      <div class="flow-label">Abrir App</div>
-      <div class="flow-sub">SEGI carrega mapa offline automaticamente</div>
+
+  <!-- SIMULATOR -->
+  <div class="sim-controls">
+    <div class="sim-title">Simulador de Cenário — Selecione um desastre</div>
+    <div class="sim-btn-row">
+      <button class="sim-btn active" id="sim-mariana" onclick="selectCenario('mariana')">Mariana (2015)</button>
+      <button class="sim-btn" id="sim-brumadinho" onclick="selectCenario('brumadinho')">Brumadinho (2019)</button>
+      <button class="sim-btn" id="sim-taquari" onclick="selectCenario('taquari')">Vale do Taquari (2023)</button>
     </div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step">
-      <div class="flow-circle fc2"><div class="flow-num fnum2">2</div>📍</div>
-      <div class="flow-label">Identificar Localização</div>
-      <div class="flow-sub">GPS determina posição em tempo real</div>
-    </div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step">
-      <div class="flow-circle fc3"><div class="flow-num fnum3">3</div>⚠</div>
-      <div class="flow-label">Verificar Risco</div>
-      <div class="flow-sub">IA analisa zona e nível de perigo</div>
-    </div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step">
-      <div class="flow-circle fc4"><div class="flow-num fnum4">4</div>🚨</div>
-      <div class="flow-label">Emitir Alerta</div>
-      <div class="flow-sub">Notificação + instruções de evacuação</div>
-    </div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step">
-      <div class="flow-circle fc5"><div class="flow-num fnum5">5</div>✓</div>
-      <div class="flow-label">Chegada Segura</div>
-      <div class="flow-sub">Navegação guiada até abrigo confirmado</div>
+    <div class="sim-status" id="sim-status">
+      <strong style="color:var(--orange);display:block;margin-bottom:4px">📍 Mariana, MG — Novembro de 2015</strong>
+      Rompimento da Barragem de Fundão (Samarco). Lama de rejeitos de mineração percorreu 680 km até o oceano. Não havia sistema de alerta ativo no momento do rompimento. A maioria das vítimas não recebeu qualquer aviso antes da chegada da lama.
     </div>
   </div>
+
+  <div class="casos-grid">
+    <div class="caso-card">
+      <div class="caso-header">
+        <div class="caso-icon" style="background:rgba(239,68,68,.15)">⛰</div>
+        <div>
+          <div class="caso-nome">Mariana — MG</div>
+          <div class="caso-data">05 de novembro de 2015 · Barragem de Fundão (Samarco)</div>
+        </div>
+      </div>
+      <div class="caso-body">
+        <div class="caso-stats">
+          <div class="caso-stat"><div class="caso-stat-num" style="color:var(--red)">19</div><div class="caso-stat-label">vítimas fatais</div></div>
+          <div class="caso-stat"><div class="caso-stat-num" style="color:var(--orange)">600</div><div class="caso-stat-label">desabrigados</div></div>
+          <div class="caso-stat"><div class="caso-stat-num" style="color:var(--yellow)">680km</div><div class="caso-stat-label">extensão do desastre</div></div>
+          <div class="caso-stat"><div class="caso-stat-num" style="color:var(--text2)">R$20bi</div><div class="caso-stat-label">custo estimado</div></div>
+        </div>
+        <div class="caso-desc">Maior desastre ambiental da história do Brasil. O rompimento ocorreu às 15h46 e a lama chegou ao distrito de Bento Rodrigues em minutos. Não havia sistema de alerta ativo. A ausência de rotas de fuga claras contribuiu diretamente para as mortes.</div>
+        <div class="caso-segi">
+          <div class="caso-segi-label">✓ Como o SEGI atuaria</div>
+          <div class="caso-segi-text">Sensores de nível d'água integrados à API disparariam alerta 40+ minutos antes. Rotas de fuga para terrenos altos seriam exibidas no app. Operação offline garantiria funcionamento mesmo com queda da rede local.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="caso-card">
+      <div class="caso-header">
+        <div class="caso-icon" style="background:rgba(249,115,22,.15)">🏗</div>
+        <div>
+          <div class="caso-nome">Brumadinho — MG</div>
+          <div class="caso-data">25 de janeiro de 2019 · Barragem B-I (Vale)</div>
+        </div>
+      </div>
+      <div class="caso-body">
+        <div class="caso-stats">
+          <div class="caso-stat"><div class="caso-stat-num" style="color:var(--red)">270</div><div class="caso-stat-label">vítimas fatais</div></div>
+          <div class="caso-stat"><div class="caso-stat-num" style="color:var(--orange)">5.000</div><div class="caso-stat-label">desabrigados</div></div>
+          <div class="caso-stat"><div class="caso-stat-num" style="color:var(--yellow)">12km</div><div class="caso-stat-label">alcance da lama</div></div>
+          <div class="caso-stat"><div class="caso-stat-num" style="color:var(--text2)">R$7bi</div><div class="caso-stat-label">multas/acordos</div></div>
+        </div>
+        <div class="caso-desc">O maior número de mortes em desastre com barragem no Brasil. A ruptura ocorreu às 12h28 sem nenhum aviso prévio para os trabalhadores e moradores próximos. O refeitório da mineradora foi soterrado na hora do almoço.</div>
+        <div class="caso-segi">
+          <div class="caso-segi-label">✓ Como o SEGI atuaria</div>
+          <div class="caso-segi-text">GeoIA detectaria anomalias estruturais via dados geotécnicos integrados. Alertas seriam emitidos com antecedência. O mapa de zonas de risco incluiria o refeitório e complexo administrativo como área crítica de evacuação.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="caso-card">
+      <div class="caso-header">
+        <div class="caso-icon" style="background:rgba(59,130,246,.15)">🌊</div>
+        <div>
+          <div class="caso-nome">Vale do Taquari — RS</div>
+          <div class="caso-data">Setembro de 2023 · Inundação e deslizamentos</div>
+        </div>
+      </div>
+      <div class="caso-body">
+        <div class="caso-stats">
+          <div class="caso-stat"><div class="caso-stat-num" style="color:var(--red)">54</div><div class="caso-stat-label">vítimas fatais</div></div>
+          <div class="caso-stat"><div class="caso-stat-num" style="color:var(--orange)">9.000+</div><div class="caso-stat-label">desabrigados</div></div>
+          <div class="caso-stat"><div class="caso-stat-num" style="color:var(--yellow)">50</div><div class="caso-stat-label">municípios atingidos</div></div>
+          <div class="caso-stat"><div class="caso-stat-num" style="color:var(--text2)">R$2bi</div><div class="caso-stat-label">danos estimados</div></div>
+        </div>
+        <div class="caso-desc">Enxurradas e deslizamentos devastaram municípios da Serra Gaúcha. Muitas pessoas ficaram ilhadas sem comunicação por dias. A falta de rotas de fuga pré-definidas e a ausência de mapas offline foram fatores críticos.</div>
+        <div class="caso-segi">
+          <div class="caso-segi-label">✓ Como o SEGI atuaria</div>
+          <div class="caso-segi-text">Mapas offline pré-carregados permitiriam navegação mesmo sem sinal. Rotas para terrenos elevados seriam calculadas com base no MDT. Alertas via SMS alcançariam usuários sem acesso à internet durante a crise.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="divider"></div>
-  <div class="features-grid" style="margin-top:1rem">
-    <div class="feat-card"><div class="feat-icon blue">📱</div><div class="feat-name">1 — Abertura</div><div class="feat-desc">App inicia carregando mapa offline do dispositivo. Não requer internet. GPS é ativado automaticamente para rastreamento contínuo.</div></div>
-    <div class="feat-card"><div class="feat-icon cyan">📍</div><div class="feat-name">2 — Localização</div><div class="feat-desc">Posição do usuário é determinada com precisão de ±3m. Localização exibida no mapa de risco em tempo real, mesmo sem sinal.</div></div>
-    <div class="feat-card"><div class="feat-icon yellow">⚠</div><div class="feat-name">3 — Verificação de Risco</div><div class="feat-desc">GeoIA analisa nível de risco da zona do usuário com base em dados topográficos, pluviométricos e histórico de inundações.</div></div>
-    <div class="feat-card"><div class="feat-icon orange">🚨</div><div class="feat-name">4 — Alerta</div><div class="feat-desc">Se risco for alto ou crítico, alerta é emitido com instruções visuais claras e rota de fuga calculada automaticamente.</div></div>
-    <div class="feat-card"><div class="feat-icon green">✓</div><div class="feat-name">5 — Navegação</div><div class="feat-desc">Rota segura destacada no mapa com pontos intermediários, distância, altitude ganho e abrigo de destino com capacidade disponível.</div></div>
+  <div style="background:linear-gradient(135deg,rgba(239,68,68,.06),rgba(249,115,22,.04));border:1px solid rgba(239,68,68,.2);border-radius:16px;padding:2rem;text-align:center">
+    <div style="font-size:1.1rem;font-weight:700;margin-bottom:.5rem">O padrão se repete em todos os casos</div>
+    <div style="font-size:.88rem;color:var(--text2);max-width:600px;margin:0 auto .8rem;line-height:1.7">Ausência de alerta prévio. Sem rotas de fuga definidas. Comunicação cortada. O SEGI resolve exatamente esses três problemas — e funciona offline quando a infraestrutura falha.</div>
+    <button class="hero-btn" onclick="showTab('impacto')">Ver Estimativa de Impacto →</button>
   </div>
 </div>
 
-<!-- ══ ARCHITECTURE ══ -->
+<!-- ══ IMPACTO ══ -->
+<div id="tab-impacto" class="section">
+  <div class="section-header">
+    <div class="section-tag">Proposta de Valor</div>
+    <div class="section-title">Estimativa de Impacto</div>
+    <div class="section-desc">Dados que justificam o investimento no SEGI para gestores, investidores e órgãos de governo.</div>
+  </div>
+  <div class="impacto-grid">
+    <div class="impacto-card">
+      <div class="impacto-num" style="color:var(--green)">70%</div>
+      <div class="impacto-label">redução estimada de mortes com alerta antecipado de 30+ minutos</div>
+      <div class="impacto-fonte">Fonte: UNDRR / Sendai Framework</div>
+    </div>
+    <div class="impacto-card">
+      <div class="impacto-num" style="color:var(--blue)">2.8M</div>
+      <div class="impacto-label">pessoas em área de risco de barragens no Brasil</div>
+      <div class="impacto-fonte">Fonte: ANA / SNISB 2023</div>
+    </div>
+    <div class="impacto-card">
+      <div class="impacto-num" style="color:var(--orange)">R$30bi</div>
+      <div class="impacto-label">custo acumulado de desastres com barragens no Brasil (2015–2023)</div>
+      <div class="impacto-fonte">Fonte: estimativa agregada</div>
+    </div>
+    <div class="impacto-card">
+      <div class="impacto-num" style="color:var(--cyan)">5.584</div>
+      <div class="impacto-label">barragens cadastradas no SNISB, sendo 385 de alto risco</div>
+      <div class="impacto-fonte">Fonte: ANA 2023</div>
+    </div>
+    <div class="impacto-card">
+      <div class="impacto-num" style="color:var(--yellow)">R$2/hab</div>
+      <div class="impacto-label">custo estimado por habitante protegido por ano (modelo SaaS municipal)</div>
+      <div class="impacto-fonte">Estimativa WRG TECH</div>
+    </div>
+    <div class="impacto-card">
+      <div class="impacto-num" style="color:var(--red)">343</div>
+      <div class="impacto-label">municípios brasileiros com alto risco de inundação ou deslizamento</div>
+      <div class="impacto-fonte">Fonte: CEMADEN 2023</div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <h3 class="sub-title">Comparativo: Situação Atual vs. SEGI</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem">
+    <div style="background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);border-radius:14px;padding:1.4rem">
+      <div style="font-size:.75rem;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.5px;margin-bottom:1rem">✗ Sem o SEGI</div>
+      <ul style="list-style:none;font-size:.83rem;color:var(--text2);line-height:2">
+        <li>✗ Alertas manuais e tardios</li>
+        <li>✗ Sem rotas de fuga definidas</li>
+        <li>✗ Comunicação falha em desastres</li>
+        <li>✗ Sem operação offline</li>
+        <li>✗ Dados dispersos entre órgãos</li>
+        <li>✗ Sem visão gerencial unificada</li>
+      </ul>
+    </div>
+    <div style="background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.2);border-radius:14px;padding:1.4rem">
+      <div style="font-size:.75rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.5px;margin-bottom:1rem">✓ Com o SEGI</div>
+      <ul style="list-style:none;font-size:.83rem;color:var(--text2);line-height:2">
+        <li>✓ Alerta em menos de 30 segundos</li>
+        <li>✓ Rotas calculadas por IA + GIS</li>
+        <li>✓ SMS fallback sem internet</li>
+        <li>✓ 100% funcional offline</li>
+        <li>✓ Integração CEMADEN/ANA/Defesa Civil</li>
+        <li>✓ Painel gerencial em tempo real</li>
+      </ul>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <h3 class="sub-title">Modelo de Negócio</h3>
+  <div class="features-grid">
+    <div class="feat-card"><div class="feat-icon green">🏛</div><div class="feat-name">SaaS Municipal</div><div class="feat-desc">Licença anual por município. Inclui mapas geoespaciais, suporte técnico e atualizações. Modelo escalável para 343 municípios de alto risco.</div></div>
+    <div class="feat-card"><div class="feat-icon blue">🤝</div><div class="feat-name">Parceria Governo Federal</div><div class="feat-desc">Integração com programas da Defesa Civil Nacional, CEMADEN e ANA. Potencial de financiamento via fundos de adaptação climática e resiliência.</div></div>
+    <div class="feat-card"><div class="feat-icon orange">🌎</div><div class="feat-name">Expansão América Latina</div><div class="feat-desc">Brasil é referência em desastres com barragens na região. O modelo é replicável para Peru, Colômbia, Chile e outros países com perfil similar de risco.</div></div>
+  </div>
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-top:1.5rem;text-align:center">
+    <div style="font-size:.75rem;text-transform:uppercase;letter-spacing:.5px;color:var(--text2);margin-bottom:.5rem">Desenvolvido por</div>
+    <div style="font-size:1.3rem;font-weight:800;letter-spacing:1px;color:var(--blue)">WRG TECH</div>
+    <div style="font-size:.82rem;color:var(--text2);margin-top:.3rem">Tecnologia Crítica · GovTech · Disaster Response</div>
+    <div style="margin-top:1rem;display:flex;justify-content:center;gap:.8rem;flex-wrap:wrap">
+      <button class="hero-btn2" onclick="showTab('arch')" style="font-size:.82rem;padding:9px 18px">Ver Arquitetura</button>
+      <button class="hero-btn2" onclick="showTab('roadmap')" style="font-size:.82rem;padding:9px 18px">Ver Roadmap</button>
+      <button class="hero-btn" onclick="showTab('app')" style="font-size:.82rem;padding:9px 18px">Abrir Protótipo</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ARCH ══ -->
 <div id="tab-arch" class="section">
   <div class="section-header">
     <div class="section-tag">Engenharia</div>
     <div class="section-title">Arquitetura do Sistema</div>
     <div class="section-desc">4 camadas integradas — do dispositivo do usuário à infraestrutura GIS profissional.</div>
   </div>
-  <div class="arch-diagram">
+  <div style="display:flex;flex-direction:column;gap:1rem;margin:2rem 0">
     <div class="arch-row">
       <div class="arch-card frontend">
         <div class="arch-label frontend">Frontend</div>
         <div class="arch-title">App Mobile</div>
-        <ul class="arch-items">
-          <li>Interface Flutter (iOS + Android)</li>
-          <li>Mapa offline com tiles vetoriais</li>
-          <li>Exibe localização, rotas e alertas</li>
-          <li>Funciona 100% sem internet</li>
-          <li>Sincroniza dados ao reconectar</li>
-        </ul>
-        <div class="arch-tech-row">
-          <span class="arch-tech t-flutter">Flutter</span>
-          <span class="arch-tech" style="background:rgba(34,197,94,.1);color:var(--green);font-size:.65rem;padding:2px 8px;border-radius:6px;font-weight:600">Dart</span>
-          <span class="arch-tech" style="background:rgba(168,85,247,.1);color:#a855f7;font-size:.65rem;padding:2px 8px;border-radius:6px;font-weight:600">SQLite</span>
-        </div>
+        <ul class="arch-items"><li>Flutter (iOS + Android)</li><li>Mapa offline com tiles vetoriais</li><li>GPS + alertas + rotas</li><li>Funciona 100% sem internet</li></ul>
+        <div class="arch-tech-row"><span class="arch-tech t-flutter">Flutter</span><span class="arch-tech" style="background:rgba(34,197,94,.1);color:var(--green);font-size:.62rem;padding:2px 7px;border-radius:6px;font-weight:600">Dart</span><span class="arch-tech" style="background:rgba(168,85,247,.1);color:#a855f7;font-size:.62rem;padding:2px 7px;border-radius:6px;font-weight:600">SQLite</span></div>
       </div>
       <div class="arch-card backend">
         <div class="arch-label backend">Backend</div>
         <div class="arch-title">API + Inteligência Artificial</div>
-        <ul class="arch-items">
-          <li>Python + FastAPI (alta performance)</li>
-          <li>Processa requisições de rota</li>
-          <li>Integra módulo GeoIA</li>
-          <li>Serve dados geoespaciais via REST</li>
-          <li>Webhooks para alertas Defesa Civil</li>
-        </ul>
-        <div class="arch-tech-row">
-          <span class="arch-tech t-python">Python</span>
-          <span class="arch-tech t-fastapi">FastAPI</span>
-          <span class="arch-tech" style="background:rgba(249,115,22,.1);color:var(--orange);font-size:.65rem;padding:2px 8px;border-radius:6px;font-weight:600">GeoIA</span>
-        </div>
+        <ul class="arch-items"><li>Python + FastAPI</li><li>Processa rotas e alertas</li><li>Integra módulo GeoIA</li><li>Webhooks CEMADEN/ANA</li></ul>
+        <div class="arch-tech-row"><span class="arch-tech t-python">Python</span><span class="arch-tech t-fastapi">FastAPI</span><span class="arch-tech" style="background:rgba(249,115,22,.1);color:var(--orange);font-size:.62rem;padding:2px 7px;border-radius:6px;font-weight:600">GeoIA</span></div>
       </div>
     </div>
     <div class="arch-connector">API REST / WebSocket</div>
@@ -862,139 +960,43 @@ h3.sub-title{font-size:1rem;font-weight:700;margin-bottom:1rem;color:var(--text)
       <div class="arch-card db">
         <div class="arch-label db">Banco Geoespacial</div>
         <div class="arch-title">PostgreSQL + PostGIS</div>
-        <ul class="arch-items">
-          <li>Armazena geometrias espaciais</li>
-          <li>Tabelas: áreas_risco, rotas_fuga, abrigos</li>
-          <li>pgRouting para cálculo de rotas</li>
-          <li>Projeção EPSG:4674 (SIRGAS 2000)</li>
-          <li>Indexação espacial com GiST</li>
-        </ul>
-        <div class="arch-tech-row">
-          <span class="arch-tech t-pg">PostgreSQL</span>
-          <span class="arch-tech" style="background:rgba(6,182,212,.1);color:var(--cyan);font-size:.65rem;padding:2px 8px;border-radius:6px;font-weight:600">PostGIS</span>
-          <span class="arch-tech" style="background:rgba(34,197,94,.1);color:var(--green);font-size:.65rem;padding:2px 8px;border-radius:6px;font-weight:600">pgRouting</span>
-        </div>
+        <ul class="arch-items"><li>Geometrias espaciais</li><li>áreas_risco · rotas_fuga · abrigos</li><li>pgRouting para cálculo de rotas</li><li>EPSG:4674 (SIRGAS 2000)</li></ul>
+        <div class="arch-tech-row"><span class="arch-tech t-pg">PostgreSQL</span><span class="arch-tech" style="background:rgba(6,182,212,.1);color:var(--cyan);font-size:.62rem;padding:2px 7px;border-radius:6px;font-weight:600">PostGIS</span><span class="arch-tech" style="background:rgba(34,197,94,.1);color:var(--green);font-size:.62rem;padding:2px 7px;border-radius:6px;font-weight:600">pgRouting</span></div>
       </div>
       <div class="arch-card gis">
         <div class="arch-label gis">Infraestrutura GIS</div>
         <div class="arch-title">QGIS · GeoServer · GDAL</div>
-        <ul class="arch-items">
-          <li>QGIS para edição e análise de camadas</li>
-          <li>GeoServer publica mapas WMS/WFS</li>
-          <li>GDAL processa MDT e shapefiles</li>
-          <li>Importação de dados CEMADEN/ANA</li>
-          <li>Exportação de tiles para app offline</li>
-        </ul>
-        <div class="arch-tech-row">
-          <span class="arch-tech t-qgis">QGIS</span>
-          <span class="arch-tech" style="background:rgba(239,68,68,.1);color:var(--red);font-size:.65rem;padding:2px 8px;border-radius:6px;font-weight:600">GeoServer</span>
-          <span class="arch-tech t-gdal">GDAL</span>
-        </div>
+        <ul class="arch-items"><li>QGIS para edição de camadas</li><li>GeoServer publica WMS/WFS</li><li>GDAL processa MDT e shapefiles</li><li>Dados CEMADEN/ANA/SNISB</li></ul>
+        <div class="arch-tech-row"><span class="arch-tech t-qgis">QGIS</span><span class="arch-tech" style="background:rgba(239,68,68,.1);color:var(--red);font-size:.62rem;padding:2px 7px;border-radius:6px;font-weight:600">GeoServer</span><span class="arch-tech t-gdal">GDAL</span></div>
       </div>
     </div>
   </div>
-</div>
-
-<!-- ══ MVP + DB + PHASE 2 ══ -->
-<div id="tab-mvp" class="section">
-  <div class="section-header">
-    <div class="section-tag">Desenvolvimento</div>
-    <div class="section-title">MVP · Banco de Dados · Fase 2</div>
-  </div>
-
-  <div class="mvp-box">
-    <div class="mvp-header">
-      <div class="mvp-badge">FASE 1</div>
-      <div>
-        <div class="mvp-title">MVP — Protótipo Funcional</div>
-        <div style="font-size:.82rem;color:var(--text2);margin-top:.2rem">Versão inicial com rotas de fuga pré-calculadas e mapa offline</div>
-      </div>
-    </div>
-    <div class="mvp-grid">
-      <div class="mvp-section">
-        <div class="mvp-section-title">Tecnologias</div>
-        <ul class="mvp-list">
-          <li>Flutter (app mobile)</li>
-          <li>FastAPI (backend Python)</li>
-          <li>PostgreSQL + PostGIS</li>
-          <li>pgRouting</li>
-        </ul>
-      </div>
-      <div class="mvp-section">
-        <div class="mvp-section-title">Funcionalidades</div>
-        <ul class="mvp-list">
-          <li>Localização do usuário via GPS</li>
-          <li>Exibição de rotas de fuga</li>
-          <li>Mapa offline funcional</li>
-        </ul>
-      </div>
-      <div class="mvp-section">
-        <div class="mvp-section-title">Entregas</div>
-        <ul class="mvp-list">
-          <li>App funcional simples</li>
-          <li>API básica REST</li>
-          <li>Banco geoespacial estruturado</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
   <div class="divider"></div>
-  <h3 class="sub-title">Estrutura do Banco de Dados Geoespacial</h3>
+  <h3 class="sub-title">Banco de Dados</h3>
   <div class="db-grid">
     <div class="db-table">
-      <div class="db-table-header"><span class="db-table-icon">⬡</span><div class="db-table-name">areas_risco</div></div>
-      <div class="db-col"><span class="db-col-name">id</span><span class="db-col-pk">PK</span></div>
-      <div class="db-col"><span class="db-col-name">geom</span><span class="db-col-type">POLYGON</span></div>
-      <div class="db-col"><span class="db-col-name">nivel_risco</span><span class="db-col-type">INTEGER</span></div>
-      <div class="db-col"><span class="db-col-name">tipo</span><span class="db-col-type">VARCHAR</span></div>
-      <div class="db-col"><span class="db-col-name">atualizado_em</span><span class="db-col-type">TIMESTAMP</span></div>
+      <div class="db-table-header"><span>⬡</span><div class="db-table-name">areas_risco</div></div>
+      <div class="db-col"><span>id</span><span class="db-col-pk">PK</span></div>
+      <div class="db-col"><span>geom</span><span class="db-col-type">POLYGON</span></div>
+      <div class="db-col"><span>nivel_risco</span><span class="db-col-type">INTEGER</span></div>
+      <div class="db-col"><span>tipo</span><span class="db-col-type">VARCHAR</span></div>
+      <div class="db-col"><span>atualizado_em</span><span class="db-col-type">TIMESTAMP</span></div>
     </div>
     <div class="db-table">
-      <div class="db-table-header"><span class="db-table-icon">⟋</span><div class="db-table-name">rotas_fuga</div></div>
-      <div class="db-col"><span class="db-col-name">id</span><span class="db-col-pk">PK</span></div>
-      <div class="db-col"><span class="db-col-name">geom</span><span class="db-col-type">LINESTRING</span></div>
-      <div class="db-col"><span class="db-col-name">tempo_estimado</span><span class="db-col-type">INTEGER</span></div>
-      <div class="db-col"><span class="db-col-name">distancia_m</span><span class="db-col-type">FLOAT</span></div>
-      <div class="db-col"><span class="db-col-name">altitude_ganho</span><span class="db-col-type">FLOAT</span></div>
+      <div class="db-table-header"><span>⟋</span><div class="db-table-name">rotas_fuga</div></div>
+      <div class="db-col"><span>id</span><span class="db-col-pk">PK</span></div>
+      <div class="db-col"><span>geom</span><span class="db-col-type">LINESTRING</span></div>
+      <div class="db-col"><span>tempo_estimado</span><span class="db-col-type">INTEGER</span></div>
+      <div class="db-col"><span>distancia_m</span><span class="db-col-type">FLOAT</span></div>
+      <div class="db-col"><span>altitude_ganho</span><span class="db-col-type">FLOAT</span></div>
     </div>
     <div class="db-table">
-      <div class="db-table-header"><span class="db-table-icon">●</span><div class="db-table-name">abrigos</div></div>
-      <div class="db-col"><span class="db-col-name">id</span><span class="db-col-pk">PK</span></div>
-      <div class="db-col"><span class="db-col-name">nome</span><span class="db-col-type">VARCHAR</span></div>
-      <div class="db-col"><span class="db-col-name">geom</span><span class="db-col-type">POINT</span></div>
-      <div class="db-col"><span class="db-col-name">capacidade</span><span class="db-col-type">INTEGER</span></div>
-      <div class="db-col"><span class="db-col-name">ocupacao_atual</span><span class="db-col-type">INTEGER</span></div>
-    </div>
-  </div>
-  <h3 class="sub-title" style="margin-top:2rem">Dados Geoespaciais Necessários</h3>
-  <div class="data-sources">
-    <div class="data-src"><div class="data-src-icon">🏔</div><div class="data-src-name">MDT</div><div class="data-src-desc">Modelo Digital do Terreno (GeoTIFF 10m)</div></div>
-    <div class="data-src"><div class="data-src-icon">📏</div><div class="data-src-name">Curvas de Nível</div><div class="data-src-desc">Equidistância 1m — gerado via GDAL</div></div>
-    <div class="data-src"><div class="data-src-icon">🛣</div><div class="data-src-name">Rede Viária</div><div class="data-src-desc">OpenStreetMap + shapefile municipal</div></div>
-    <div class="data-src"><div class="data-src-icon">🌧</div><div class="data-src-name">Dados Pluviométricos</div><div class="data-src-desc">CEMADEN / ANA — integração API</div></div>
-  </div>
-
-  <div class="divider"></div>
-  <h3 class="sub-title">Fase 2 — GIS Profissional & Diferenciais</h3>
-  <div class="features-grid">
-    <div class="feat-card">
-      <div class="feat-icon orange">🗺</div>
-      <div class="feat-name">QGIS + GeoServer</div>
-      <div class="feat-desc">Publicação de mapas WMS/WFS. Edição avançada de camadas de risco. Importação de shapefiles e dados de sensores remotos.</div>
-      <div class="feat-tags"><span class="feat-tag">WMS</span><span class="feat-tag">WFS</span><span class="feat-tag">Shapefile</span></div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon cyan">🤖</div>
-      <div class="feat-name">GeoIA — Inteligência Artificial</div>
-      <div class="feat-desc">Modelo de machine learning para predição de risco com base em dados topográficos e históricos. Acurácia de 94%+ com Random Forest.</div>
-      <div class="feat-tags"><span class="feat-tag">ML</span><span class="feat-tag">Random Forest</span><span class="feat-tag">GDAL</span></div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon green">📡</div>
-      <div class="feat-name">Integração com Dados Reais</div>
-      <div class="feat-desc">Conexão com CEMADEN, ANA e sistemas de alerta estaduais. Atualização automática de zonas de risco e níveis de reservatórios.</div>
-      <div class="feat-tags"><span class="feat-tag">CEMADEN</span><span class="feat-tag">ANA</span><span class="feat-tag">Webhook</span></div>
+      <div class="db-table-header"><span>●</span><div class="db-table-name">abrigos</div></div>
+      <div class="db-col"><span>id</span><span class="db-col-pk">PK</span></div>
+      <div class="db-col"><span>nome</span><span class="db-col-type">VARCHAR</span></div>
+      <div class="db-col"><span>geom</span><span class="db-col-type">POINT</span></div>
+      <div class="db-col"><span>capacidade</span><span class="db-col-type">INTEGER</span></div>
+      <div class="db-col"><span>ocupacao_atual</span><span class="db-col-type">INTEGER</span></div>
     </div>
   </div>
 </div>
@@ -1004,104 +1006,46 @@ h3.sub-title{font-size:1rem;font-weight:700;margin-bottom:1rem;color:var(--text)
   <div class="section-header">
     <div class="section-tag">Planejamento</div>
     <div class="section-title">Roadmap & Próximos Passos</div>
-    <div class="section-desc">Da estruturação do banco até a produção — linha do tempo executiva do SEGI.</div>
+    <div class="section-desc">Da estruturação do banco até a produção e expansão nacional.</div>
   </div>
   <div class="roadmap">
     <div class="roadmap-line"></div>
-    <div class="rm-item">
-      <div class="rm-dot done">✓</div>
-      <div class="rm-content">
-        <div class="rm-title">1. Criar Banco SQL</div>
-        <div class="rm-desc">Estruturar tabelas geoespaciais no PostgreSQL + PostGIS. Definir schemas para áreas_risco, rotas_fuga e abrigos com indexação GiST.</div>
-        <span class="rm-tag done">Concluído</span>
-      </div>
-    </div>
-    <div class="rm-item">
-      <div class="rm-dot active">→</div>
-      <div class="rm-content">
-        <div class="rm-title">2. Desenvolver API</div>
-        <div class="rm-desc">Código inicial em Python com FastAPI. Endpoints para rotas de fuga, alertas e dados de abrigos. Documentação automática via Swagger.</div>
-        <span class="rm-tag active">Em progresso</span>
-      </div>
-    </div>
-    <div class="rm-item">
-      <div class="rm-dot future">3</div>
-      <div class="rm-content">
-        <div class="rm-title">3. App Flutter</div>
-        <div class="rm-desc">Criar layout e navegação do aplicativo mobile. Implementar mapa offline, GPS, tela de alertas e visualização de rotas de fuga.</div>
-        <span class="rm-tag future">Próximo</span>
-      </div>
-    </div>
-    <div class="rm-item">
-      <div class="rm-dot future">4</div>
-      <div class="rm-content">
-        <div class="rm-title">4. Integrar GIS</div>
-        <div class="rm-desc">Conectar QGIS e GeoServer ao sistema. Publicar camadas WMS/WFS. Configurar pipeline de atualização de dados geoespaciais.</div>
-        <span class="rm-tag future">Planejado</span>
-      </div>
-    </div>
-    <div class="rm-item">
-      <div class="rm-dot future">5</div>
-      <div class="rm-content">
-        <div class="rm-title">5. Implementar GeoIA</div>
-        <div class="rm-desc">Treinar e integrar modelo de inteligência artificial para análise preditiva de risco. Validar com dados históricos de inundações brasileiras.</div>
-        <span class="rm-tag future">Planejado</span>
-      </div>
-    </div>
-    <div class="rm-item">
-      <div class="rm-dot future">✦</div>
-      <div class="rm-content">
-        <div class="rm-title">6. Produção</div>
-        <div class="rm-desc">Deploy em infraestrutura cloud com alta disponibilidade. Integração com Defesa Civil, CEMADEN e ANA. Piloto em município de risco.</div>
-        <span class="rm-tag future">Futuro</span>
-      </div>
-    </div>
+    <div class="rm-item"><div class="rm-dot done">✓</div><div class="rm-content"><div class="rm-title">1. Criar Banco SQL</div><div class="rm-desc">Estruturar tabelas geoespaciais no PostgreSQL + PostGIS com indexação GiST.</div><span class="rm-tag done">Concluído</span></div></div>
+    <div class="rm-item"><div class="rm-dot active">→</div><div class="rm-content"><div class="rm-title">2. Desenvolver API</div><div class="rm-desc">Python + FastAPI. Endpoints para rotas, alertas e abrigos. Documentação Swagger.</div><span class="rm-tag active">Em progresso</span></div></div>
+    <div class="rm-item"><div class="rm-dot future">3</div><div class="rm-content"><div class="rm-title">3. App Flutter</div><div class="rm-desc">Layout e navegação. Mapa offline, GPS, alertas e rotas de fuga.</div><span class="rm-tag future">Próximo</span></div></div>
+    <div class="rm-item"><div class="rm-dot future">4</div><div class="rm-content"><div class="rm-title">4. Integrar GIS</div><div class="rm-desc">Conectar QGIS e GeoServer. Pipeline de atualização de camadas de risco.</div><span class="rm-tag future">Planejado</span></div></div>
+    <div class="rm-item"><div class="rm-dot future">5</div><div class="rm-content"><div class="rm-title">5. Implementar GeoIA</div><div class="rm-desc">Treinar modelo de predição de risco. Validar com dados históricos de Mariana e Brumadinho.</div><span class="rm-tag future">Planejado</span></div></div>
+    <div class="rm-item"><div class="rm-dot future">✦</div><div class="rm-content"><div class="rm-title">6. Produção + Piloto Municipal</div><div class="rm-desc">Deploy em cloud. Integração Defesa Civil/CEMADEN/ANA. Piloto em município de alto risco.</div><span class="rm-tag future">Futuro</span></div></div>
   </div>
-
   <div class="divider"></div>
   <h3 class="sub-title">Riscos e Cuidados</h3>
   <div class="risk-cards">
-    <div class="risk-card2 high">
-      <div class="risk-level high">⬛ Risco Alto</div>
-      <div class="risk-title">Responsabilidade Legal</div>
-      <div class="risk-desc">Sistema utilizado em emergências de vida ou morte. Requer validação rigorosa com autoridades competentes, disclaimers legais e parceria formal com Defesa Civil.</div>
-    </div>
-    <div class="risk-card2 medium">
-      <div class="risk-level medium">⬛ Risco Médio</div>
-      <div class="risk-title">Precisão dos Dados</div>
-      <div class="risk-desc">Rotas e zonas de risco incorretas podem colocar usuários em perigo. Necessidade de dados geoespaciais de alta qualidade, validação de campo e atualização contínua.</div>
-    </div>
-    <div class="risk-card2 low">
-      <div class="risk-level low">⬛ Atenção</div>
-      <div class="risk-title">Dependência de Fontes</div>
-      <div class="risk-desc">Sistema depende de dados confiáveis do CEMADEN, ANA e municípios. Falha ou atraso nas fontes pode comprometer a qualidade dos alertas e rotas geradas.</div>
-    </div>
-  </div>
-
-  <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-top:1.5rem;text-align:center">
-    <div style="font-size:.75rem;text-transform:uppercase;letter-spacing:.5px;color:var(--text2);margin-bottom:.5rem">Desenvolvido por</div>
-    <div style="font-size:1.3rem;font-weight:800;letter-spacing:1px;color:var(--blue)">WRG TECH</div>
-    <div style="font-size:.82rem;color:var(--text2);margin-top:.3rem">Tecnologia Crítica · GovTech · Disaster Response</div>
+    <div class="risk-card2 high"><div class="risk-level high">⬛ Risco Alto</div><div class="risk-title">Responsabilidade Legal</div><div class="risk-desc">Sistema de vida ou morte. Requer validação com autoridades, disclaimers legais e parceria formal com Defesa Civil.</div></div>
+    <div class="risk-card2 medium"><div class="risk-level medium">⬛ Risco Médio</div><div class="risk-title">Precisão dos Dados</div><div class="risk-desc">Rotas incorretas colocam usuários em perigo. Necessita dados geoespaciais de alta qualidade e validação de campo.</div></div>
+    <div class="risk-card2 low"><div class="risk-level low">⬛ Atenção</div><div class="risk-title">Dependência de Fontes</div><div class="risk-desc">Sistema depende de CEMADEN, ANA e municípios. Atraso nas fontes compromete a qualidade dos alertas.</div></div>
   </div>
 </div>
 
 <script>
+// TAB NAVIGATION
 function showTab(id){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById('tab-'+id).classList.add('active');
-  const tabs=['home','app','features','flow','arch','mvp','roadmap'];
+  const tabs=['home','app','dashboard','casos','impacto','arch','roadmap'];
   const idx=tabs.indexOf(id);
   if(idx>=0)document.querySelectorAll('.tab-btn')[idx].classList.add('active');
+  window.scrollTo(0,0);
 }
 
+// APP SCREENS
 const screenDescs={
-  splash:{title:'Tela de Abertura',desc:'Splash screen do SEGI com opções de entrada no sistema ou simulação de alerta de emergência.'},
-  map:{title:'Mapa Principal',desc:'Mapa de risco com zonas coloridas, localização do usuário em tempo real, rota verde segura e painel de status com botão de evacuação.'},
-  alert:{title:'Alerta de Emergência',desc:'Tela de alerta crítico com instruções passo a passo de evacuação, nível de risco e botão para iniciar navegação.'},
-  route:{title:'Rota de Fuga',desc:'Navegação guiada até o abrigo mais próximo com distância, tempo estimado, altitude ganho e waypoints seguros.'},
-  shelters:{title:'Abrigos Seguros',desc:'Lista de abrigos ordenados por distância com capacidade atual, status da rota de acesso e informações de ocupação.'},
-  tech:{title:'Modo Técnico',desc:'Painel profissional com camadas GIS ativas, métricas do sistema, dados geoespaciais brutos e status do modelo de IA.'}
+  splash:{title:'Tela de Abertura',desc:'Splash screen com entrada no sistema ou simulação de alerta de emergência.'},
+  map:{title:'Mapa + Contador Regressivo',desc:'Mapa de risco com zonas coloridas, contador regressivo de tempo até o risco, legenda interativa e botão de evacuação.'},
+  alert:{title:'Alerta de Emergência',desc:'Alerta crítico com instruções passo a passo, nível de risco e botão para iniciar navegação segura.'},
+  route:{title:'Rota + Barra de Progresso',desc:'Navegação guiada com barra de progresso da rota, distância, tempo, altitude ganho e waypoints seguros.'},
+  shelters:{title:'Abrigos Seguros',desc:'Lista de abrigos com capacidade, status da rota e informações de ocupação em tempo real.'},
+  tech:{title:'Modo GIS Técnico',desc:'Painel profissional com camadas GIS ativas, métricas do sistema e status do modelo GeoIA. Exclusivo WRG TECH.'}
 };
 
 function switchScreen(id){
@@ -1112,12 +1056,44 @@ function switchScreen(id){
   if(s)s.classList.add('active');
   if(b)b.classList.add('active');
   const d=screenDescs[id];
-  if(d){
-    const box=document.getElementById('screen-desc-box');
-    box.innerHTML='<strong>'+d.title+'</strong>'+d.desc;
-  }
+  if(d){document.getElementById('screen-desc-box').innerHTML='<strong>'+d.title+'</strong>'+d.desc;}
 }
 switchScreen('splash');
+
+// COUNTDOWN TIMER
+let totalSecs = 34*60+22;
+function updateCountdown(){
+  if(totalSecs>0)totalSecs--;
+  const m=Math.floor(totalSecs/60);
+  const s=totalSecs%60;
+  const el=document.getElementById('countdown-display');
+  if(el)el.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+}
+setInterval(updateCountdown,1000);
+
+// CLOCK
+function updateClock(){
+  const now=new Date();
+  const h=String(now.getHours()).padStart(2,'0');
+  const m=String(now.getMinutes()).padStart(2,'0');
+  const el=document.getElementById('clock');
+  if(el)el.textContent=h+':'+m;
+}
+updateClock();
+setInterval(updateClock,10000);
+
+// SIMULATOR
+const cenarios={
+  mariana:{nome:'Mariana, MG — Novembro de 2015',desc:'Rompimento da Barragem de Fundão (Samarco). Lama de rejeitos percorreu 680 km até o oceano. Não havia sistema de alerta ativo. A maioria das vítimas não recebeu aviso antes da chegada da lama.'},
+  brumadinho:{nome:'Brumadinho, MG — Janeiro de 2019',desc:'Maior número de mortes em desastre com barragem no Brasil. A ruptura ocorreu às 12h28 sem nenhum aviso prévio. O refeitório foi soterrado na hora do almoço com dezenas de trabalhadores.'},
+  taquari:{nome:'Vale do Taquari, RS — Setembro de 2023',desc:'Enxurradas e deslizamentos devastaram 50 municípios. Pessoas ficaram ilhadas sem comunicação por dias. A falta de rotas offline e a queda da rede foram fatores determinantes nas mortes.'}
+};
+function selectCenario(id){
+  document.querySelectorAll('.sim-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('sim-'+id).classList.add('active');
+  const c=cenarios[id];
+  document.getElementById('sim-status').innerHTML='<strong style="color:var(--orange);display:block;margin-bottom:4px">📍 '+c.nome+'</strong>'+c.desc;
+}
 </script>
 </body>
 </html>
